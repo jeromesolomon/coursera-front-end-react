@@ -1,0 +1,6 @@
+// to create
+creat-react-app app-name
+
+// to start
+yarn start
+
