@@ -4,3 +4,12 @@ creat-react-app app-name
 // to start
 yarn start
 
+// to add bootstrap (yarn or npm to add)
+yarn add bootstrap
+
+// add bootstrap & popper elements as react implementations
+yarn add reactstrap@5.0.0 
+yarn add react-popper@0.9.2 
+
+// in vs code, enable eslint, disable jslint
+
