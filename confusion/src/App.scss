@@ -1,40 +1,22 @@
+/*! `Custom` Bootstrap 4 theme from http://themestr.app */
+
+$enable-grid-classes:false;
+$primary:#083358;
+$secondary:#F67280;
+$success:#0074E4;
+$danger:#FF4057;
+$info:#74DBEF;
+$warning:#FC3C3C;
+$light:#F2F2F0;
+$dark:#072247;
+$enable-gradients:false;
+$spacer:1rem;
+$border-width:1px;
+$btn-border-radius:.25rem;
+
+// Bootstrap and its default variables
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+// Add SASS theme customizations here..
+
 $link-blue-color: #4a97d6;
-
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: $link-blue-color;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
