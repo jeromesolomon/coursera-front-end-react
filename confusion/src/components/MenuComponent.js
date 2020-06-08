@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Media } from 'reactstrap';
-import { DISHLIST } from '../shared/dishList';
-
+import { Card, CardImg, CardImgOverlay, 
+        CardText, CardBody, CardTitle } from 'reactstrap';
 
 
 class Menu extends Component {
@@ -23,30 +22,26 @@ class Menu extends Component {
             (dish, index) => {
 
                 return (
-                    <div key={index} className="col-12 mt-5">
-                        <Media tag="li">
-                            <Media left middle>
-                                <Media object src={dish.image} alt={dish.name} />
-                            </Media>
-                            <Media body className="ml-5">
-                                <Media heading>{dish.name}</Media>
-                                <p>{dish.description}</p>
-                            </Media>
-                        </Media>
+                    // extra small to small one column for all 12 columns
+                    // for medium to extra largre screens, each card occupies 5 columns
+                    <div key={index} className="col-12 col-md-5 m-1">
+                        <Card>
+                            <CardImg width="100%" src={dish.image} alt={dish.name} />
+                            <CardImgOverlay>
+                                <CardTitle heading>{dish.name}</CardTitle>
+                            </CardImgOverlay>
+                        </Card>
 
                     </div>
                     
                 );
             });
 
-        // use list of items in container/grid
+        // use list of items in each row of container/grid
         return (
             <div className="container">
                 <div className="row">
-                    <Media list>
-                        {menu}
-                    </Media>
-
+                    {menu}
                 </div>
             </div>
 
