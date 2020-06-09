@@ -7958,4 +7958,8 @@ a.text-dark:hover, a.text-dark:focus {
 .dishComment {
   padding: 8px 0px 8px 0px;
 }
+
+.dishDescription {
+  padding: 15px;
+}
 /*# sourceMappingURL=App.css.map */

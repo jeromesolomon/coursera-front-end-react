@@ -26,7 +26,7 @@ class DishDetail extends Component {
                         <CardBody>
                             <CardTitle heading>{dish.name}</CardTitle>
                         </CardBody>
-                        <CardText>
+                        <CardText className="dishDescription">
                             {dish.description}
                         </CardText> 
                     </Card>
