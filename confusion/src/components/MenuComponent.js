@@ -3,7 +3,6 @@ import { Card, CardImg, CardBody, CardText, CardImgOverlay, CardTitle } from 're
 
 // import new components
 import DishDetail from './DishDetailComponent';
-import DishComment from './DishCommentComponent';
 
 class Menu extends Component {
 
@@ -73,10 +72,7 @@ class Menu extends Component {
                 <div className="row">
                     {menu}
                 </div>
-                <div className="row"> 
-                <DishDetail selectedDish={this.state.selectedDish}></DishDetail>
-                <DishComment selectedDish={this.state.selectedDish}></DishComment>
-                </div>
+                    <DishDetail selectedDish={this.state.selectedDish}></DishDetail>
             </div>
         );
     }
