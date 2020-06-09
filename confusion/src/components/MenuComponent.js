@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Card, CardImg, CardBody, CardText, CardImgOverlay, CardTitle } from 'reactstrap';
 
+// import new components
+import DishDetail from './DishDetailComponent';
 
 class Menu extends Component {
 
@@ -42,15 +44,17 @@ class Menu extends Component {
 
     render() {
 
+
         // construct a list of media items
         const menu = this.props.dishList.map(
             (dish, index) => {
 
                 return (
-                    // extra small to small one column for all 12 columns
-                    // for medium to extra largre screens, each card occupies 5 columns
+                    // col-12 col-md-6 means:
+                    // on mobile: extra small to small one column for all 12 columns
+                    // on laptop/tablet for medium to extra largre screens, each card occupies 5 columns
                     <div key={index} className="col-12 col-md-6">
-                        <Card onClick={() => {this.onDishSelect(dish)}}>
+                        <Card className="dishCard" onClick={() => {this.onDishSelect(dish)}}>
                             <CardImg src={dish.image} alt={dish.name} />
                             <CardImgOverlay>
                                 <CardTitle heading>{dish.name}</CardTitle>
@@ -68,11 +72,10 @@ class Menu extends Component {
                 <div className="row">
                     {menu}
                 </div>
-                <div className="row">
-                    {this.renderDish(this.state.selectedDish)}
+                <div className="row"> 
+                    <DishDetail selectedDish={this.state.selectedDish}></DishDetail>
                 </div>
             </div>
-
         );
     }
 

@@ -20,3 +20,11 @@ $btn-border-radius:.25rem;
 // Add SASS theme customizations here..
 
 $link-blue-color: #4a97d6;
+
+.dishCard {
+    border: 1px solid $primary;
+}
+
+.dishDetailCard {
+    border: 1px solid $secondary;
+}
