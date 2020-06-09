@@ -3,6 +3,7 @@ import { Card, CardImg, CardBody, CardText, CardImgOverlay, CardTitle } from 're
 
 // import new components
 import DishDetail from './DishDetailComponent';
+import DishComment from './DishCommentComponent';
 
 class Menu extends Component {
 
@@ -45,7 +46,7 @@ class Menu extends Component {
     render() {
 
 
-        // construct a list of media items
+        // construct a list of card items
         const menu = this.props.dishList.map(
             (dish, index) => {
 
@@ -73,7 +74,8 @@ class Menu extends Component {
                     {menu}
                 </div>
                 <div className="row"> 
-                    <DishDetail selectedDish={this.state.selectedDish}></DishDetail>
+                <DishDetail selectedDish={this.state.selectedDish}></DishDetail>
+                <DishComment selectedDish={this.state.selectedDish}></DishComment>
                 </div>
             </div>
         );

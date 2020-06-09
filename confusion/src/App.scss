@@ -20,11 +20,25 @@ $btn-border-radius:.25rem;
 // Add SASS theme customizations here..
 
 $link-blue-color: #4a97d6;
+$card-margin: 10px;
 
 .dishCard {
     border: 1px solid $primary;
+    margin: $card-margin;
 }
+
 
 .dishDetailCard {
     border: 1px solid $secondary;
+    margin: $card-margin;
 }
+
+.dishCommentCardText {
+    padding: 15px;
+}
+
+.dishComment {
+    // top and bottom padding
+    padding: 8px 0px 8px 0px;
+}
+

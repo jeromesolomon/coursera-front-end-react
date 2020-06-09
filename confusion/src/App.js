@@ -17,7 +17,7 @@ class App extends Component {
 
     // add dish list to the apps state
     this.state = {
-      dishes: DISHLIST
+      dishList: DISHLIST
     }
 
   }
@@ -31,7 +31,7 @@ class App extends Component {
             <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
           </div>
         </Navbar>
-        <Menu dishList={this.state.dishes}></Menu>
+        <Menu dishList={this.state.dishList}></Menu>
       </div>
     );
   }

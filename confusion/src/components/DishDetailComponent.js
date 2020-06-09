@@ -14,8 +14,6 @@ class DishDetail extends Component {
 
     }
 
-
-
     render() {
 
         let dish = this.props.selectedDish;
