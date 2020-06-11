@@ -24,7 +24,6 @@ class MainComponent extends Component {
 
     // dish selected and update in components state
     onDishSelect(dishId) {
-        console.log("in");
         this.setState({ selectedDishId: dishId});
     }
 
@@ -42,7 +41,7 @@ class MainComponent extends Component {
                 mainOnDishSelect={(dishId) => {this.onDishSelect(dishId)}}
             >
             </Menu>
-            <DishDetail selectedDish={this.state.dishList.filter(
+            <DishDetail dish={this.state.dishList.filter(
                 (dish) => dish.id === this.state.selectedDishId)[0]}>
             </DishDetail>
         </div>
