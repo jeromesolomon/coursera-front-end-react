@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Card, CardImg, CardBody, CardText, CardImgOverlay, CardTitle } from 'reactstrap';
 
-// import new components
-import DishDetail from './DishDetailComponent';
+// import components
 
 class Menu extends Component {
 
@@ -12,22 +11,18 @@ class Menu extends Component {
 
         // state has properties related to this component
         this.state = {
-            selectedDish: null
         };
 
     }
 
-    // dish selected and update in components state
-    onDishSelect(dish) {
-        this.setState({ selectedDish: dish});
-    }
+
 
 
     renderDish(dish) {
         if (dish != null) {
             return (
                 <div className="col-12">
-                    <Card>
+                    <Card onClick={() => this.props.onClick(dish.id)}>
                         <CardImg src={dish.image} alt={dish.name} />
                         <CardBody>
                             <CardTitle heading>{dish.name}</CardTitle>
@@ -54,7 +49,9 @@ class Menu extends Component {
                     // on mobile: extra small to small one column for all 12 columns
                     // on laptop/tablet for medium to extra largre screens, each card occupies 5 columns
                     <div key={index} className="col-12 col-md-6">
-                        <Card className="dishCard" onClick={() => {this.onDishSelect(dish)}}>
+                        <Card 
+                            className="dishCard"
+                            onClick={() => this.props.mainOnDishSelect(dish.id)}>
                             <CardImg src={dish.image} alt={dish.name} />
                             <CardImgOverlay>
                                 <CardTitle heading>{dish.name}</CardTitle>
@@ -72,7 +69,6 @@ class Menu extends Component {
                 <div className="row">
                     {menu}
                 </div>
-                    <DishDetail selectedDish={this.state.selectedDish}></DishDetail>
             </div>
         );
     }

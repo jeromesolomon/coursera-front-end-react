@@ -63,6 +63,7 @@ class DishDetail extends Component {
 
         if (dish != null) {
             return (
+            <div className="container">
                 <div className="row">
                     <div className="col-12 col-md-6">
                         <Card className="dishDetailCard">
@@ -84,6 +85,7 @@ class DishDetail extends Component {
                         </Card>
                     </div>
                 </div>
+            </div>
             )
         } else {
             return (<div></div>);
