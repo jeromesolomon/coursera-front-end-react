@@ -9,7 +9,7 @@ function RenderDish(props) {
 
     if (dish != null) {
         return (
-            <div className="noSpaceDiv col-12">
+            <React.Fragment>
                 <Card 
                     className="dishDetailCard">
                     <CardImg src={dish.image} alt={dish.name} />
@@ -20,7 +20,7 @@ function RenderDish(props) {
                         {dish.description}
                     </CardText> 
                 </Card>
-            </div>
+            </React.Fragment>
         )
     }
 
@@ -59,7 +59,7 @@ function RenderComments(props) {
         // <pre>{JSON.stringify(commentsFormatted)}</pre>
 
         return (
-                <div className="noSpaceDiv col-12">
+                <React.Fragment>
                     <Card 
                         className="dishCommentCard">
                         <CardBody>
@@ -71,7 +71,7 @@ function RenderComments(props) {
                             </ul>
                         </CardText> 
                     </Card>
-                </div>
+                </React.Fragment>
         );       
 
     } else {

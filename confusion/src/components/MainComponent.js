@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Navbar, NavbarBrand } from 'reactstrap';
 
 // shared data
 import { DISHLIST } from '../shared/dishList';
 
 // import  components
+import Header from './HeaderComponent';
+import Footer from './FooterComponent';
 import Menu from './MenuComponent';
 import DishDetail from './DishDetailComponent';
 
@@ -31,11 +32,7 @@ class MainComponent extends Component {
 
         return (
         <div>
-            <Navbar dark color="primary">
-            <div className="container">
-                <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
-            </div>
-            </Navbar>
+            <Header></Header>
             <Menu 
                 dishList={this.state.dishList}
                 mainOnDishSelect={(dishId) => {this.onDishSelect(dishId)}}
@@ -44,6 +41,7 @@ class MainComponent extends Component {
             <DishDetail dish={this.state.dishList.filter(
                 (dish) => dish.id === this.state.selectedDishId)[0]}>
             </DishDetail>
+            <Footer></Footer>
         </div>
         );
     }

@@ -1,25 +1,5 @@
 import React from 'react';
-import { Card, CardImg, CardBody, CardText, CardImgOverlay, CardTitle } from 'reactstrap';
-
-
-function renderDish(dish) {
-    if (dish != null) {
-        return (
-            <div className="col-12">
-                <Card onClick={() => this.props.onClick(dish.id)}>
-                    <CardImg src={dish.image} alt={dish.name} />
-                    <CardBody>
-                        <CardTitle heading>{dish.name}</CardTitle>
-                    </CardBody>
-                    <CardText>
-                        {dish.description}
-                    </CardText> 
-                </Card>
-            </div>
-        )
-    }
-
-};
+import { Card, CardImg, CardImgOverlay, CardTitle } from 'reactstrap';
 
 function MenuItem(props) {
 
