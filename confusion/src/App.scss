@@ -23,6 +23,11 @@ $link-blue-color: #4a97d6;
 $card-margin: 10px;
 $text-padding: 15px;
 
+.noSpaceDiv {
+    margin: 0px;
+    padding: 0px;
+}
+
 .dishCard {
     border: 1px solid $primary;
     margin: $card-margin;
@@ -34,8 +39,9 @@ $text-padding: 15px;
     margin: $card-margin;
 }
 
-.dishCommentCardText {
-    padding: $text-padding;
+.dishCommentCard {
+    border: 0px;
+    margin: $card-margin;
 }
 
 .dishComment {

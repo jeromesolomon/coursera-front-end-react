@@ -9,7 +9,7 @@ function RenderDish(props) {
 
     if (dish != null) {
         return (
-            <div className="col-12">
+            <div className="noSpaceDiv col-12">
                 <Card 
                     className="dishDetailCard">
                     <CardImg src={dish.image} alt={dish.name} />
@@ -59,9 +59,19 @@ function RenderComments(props) {
         // <pre>{JSON.stringify(commentsFormatted)}</pre>
 
         return (
-                <ul class="list-unstyled">
-                    {commentItems}
-                </ul>
+                <div className="noSpaceDiv col-12">
+                    <Card 
+                        className="dishCommentCard">
+                        <CardBody>
+                            <CardTitle heading><h4>Comments</h4></CardTitle>
+                        </CardBody>
+                        <CardText>
+                            <ul class="list-unstyled">
+                                {commentItems}
+                            </ul>
+                        </CardText> 
+                    </Card>
+                </div>
         );       
 
     } else {
