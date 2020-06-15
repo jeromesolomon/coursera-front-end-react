@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 // shared data
 import { DISHLIST } from '../shared/dishList';
@@ -6,6 +7,7 @@ import { DISHLIST } from '../shared/dishList';
 // import  components
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
+import Home from './HomeComponent';
 import Menu from './MenuComponent';
 import DishDetail from './DishDetailComponent';
 
@@ -17,15 +19,9 @@ class MainComponent extends Component {
 
         // add dish list to the apps state
         this.state = {
-        dishList: DISHLIST,
-        selectedDishId: null
+        dishList: DISHLIST
         };
 
-    }
-
-    // dish selected and update in components state
-    onDishSelect(dishId) {
-        this.setState({ selectedDishId: dishId});
     }
 
     render() {
@@ -33,14 +29,17 @@ class MainComponent extends Component {
         return (
         <div>
             <Header></Header>
-            <Menu 
-                dishList={this.state.dishList}
-                mainOnDishSelect={(dishId) => {this.onDishSelect(dishId)}}
-            >
-            </Menu>
-            <DishDetail dish={this.state.dishList.filter(
-                (dish) => dish.id === this.state.selectedDishId)[0]}>
-            </DishDetail>
+                <Switch>
+                    <Route path='/home' component={
+                        () => <Home></Home>}
+                    >
+                    </Route>
+                    <Route exact path='/menu' component={
+                        () => <Menu dishList={this.state.dishList}></Menu>}
+                    >
+                    </Route>
+                    <Redirect to="/home" />
+                </Switch>
             <Footer></Footer>
         </div>
         );

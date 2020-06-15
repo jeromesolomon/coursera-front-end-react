@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 
 // import new components
 import Main from './components/MainComponent';
@@ -10,9 +11,11 @@ class App extends Component {
   render() {
 
     return (
-      <div>
-        <Main></Main>
-      </div>
+      <BrowserRouter>
+        <div className="App">
+          <Main></Main>
+        </div>
+      </BrowserRouter>
     );
   }
 
