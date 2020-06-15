@@ -13,7 +13,7 @@ import Footer from './FooterComponent';
 import Home from './HomeComponent';
 import Menu from './MenuComponent';
 import Contact from './ContactComponent';
-import DishDetail from './DishDetailComponent';
+
 
 class MainComponent extends Component {
 
@@ -31,6 +31,8 @@ class MainComponent extends Component {
 
     }
 
+    
+
     render() {
 
         return (
@@ -46,7 +48,9 @@ class MainComponent extends Component {
                     >
                     </Route>
                     <Route exact path='/menu' component={
-                        () => <Menu dishList={this.state.dishList}></Menu>}
+                        () => <Menu 
+                                dishList={this.state.dishList}
+                            ></Menu>}
                     >
                     </Route>
                     <Route exact path='/contactus' component={
