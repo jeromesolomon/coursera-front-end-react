@@ -20,6 +20,8 @@ $btn-border-radius:.25rem;
 // Add SASS theme customizations here..
 
 $link-blue-color: #4a97d6;
+$light-secondary: #fad2d5;
+$light-primary:#80a4c4;
 $card-margin: 10px;
 $text-padding: 15px;
 
@@ -75,9 +77,9 @@ $text-padding: 15px;
 }
 
 address{
-    font-size:80%;
-    margin:0px;
-    color:#0f0f0f;
+    font-size: 80%;
+    margin: 0px;
+    color: #0f0f0f;
 }
 
 .navbar-dark {
