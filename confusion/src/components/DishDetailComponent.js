@@ -31,7 +31,16 @@ function RenderComments(props) {
 
     const { comments } = props;
 
-    if (comments != null) {
+    // date.toLocaleDateString('en-US', options));
+    // <pre>{JSON.stringify(commentsFormatted)}</pre>
+
+    let commentItems = undefined;
+
+    if (comments == null) {
+
+        return (<div></div>);
+        
+    } else {
 
         // construct and format the unstyled list item comments
 
@@ -39,7 +48,7 @@ function RenderComments(props) {
         const dateOptions = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
 
 
-        const commentItems = comments.map(
+        commentItems = comments.map(
             (x, index) => {
 
                 let aDate = new Date(x.date);
@@ -54,31 +63,27 @@ function RenderComments(props) {
                 );
             });
 
-        // date.toLocaleDateString('en-US', options));
-
-        // <pre>{JSON.stringify(commentsFormatted)}</pre>
-
         return (
-                <React.Fragment>
-                    <Card 
-                        className="dishCommentCard">
-                        <CardBody>
-                            <CardTitle heading><h4>Comments</h4></CardTitle>
-                        </CardBody>
-                        <CardText>
-                            <ul class="list-unstyled">
-                                {commentItems}
-                            </ul>
-                        </CardText> 
-                    </Card>
-                </React.Fragment>
-        );       
+            <React.Fragment>
+                <Card 
+                    className="dishCommentCard">
+                    <CardBody>
+                        <CardTitle heading><h4>Comments</h4></CardTitle>
+                    </CardBody>
+                    <CardText>
+                        <ul class="list-unstyled">
+                            {commentItems}
+                        </ul>
+                    </CardText> 
+                </Card>
+            </React.Fragment>
+        );
 
-    } else {
-        return (<p>No comments</p>);
     }
 
+
 }
+
 
 const DishDetail = (props) => {
 

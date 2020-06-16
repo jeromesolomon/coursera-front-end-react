@@ -39,7 +39,9 @@ class Menu extends Component {
     }
 
     onDishSelect(dishId) {
-        console.log("dishId = ",dishId);
+
+        // console.log("dishId = ",dishId);
+
         this.setState({ selectedDishId: dishId});
     }
 
