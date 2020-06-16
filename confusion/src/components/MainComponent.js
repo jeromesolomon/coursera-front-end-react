@@ -13,6 +13,7 @@ import Footer from './FooterComponent';
 import Home from './HomeComponent';
 import Menu from './MenuComponent';
 import Contact from './ContactComponent';
+import About from './AboutComponent';
 import DishDetail from './DishDetailComponent';
 
 
@@ -73,10 +74,19 @@ class MainComponent extends Component {
                     >
                     </Route>
 
+                    <Route exact path='/aboutus' component={
+                        () => <About
+                            leaders={this.state.leaderList}
+                            >
+                            </About>}
+                    >
+                    </Route>
+
                     <Route exact path='/menu' component={
                         () => <Menu 
                                 dishList={this.state.dishList}
-                            ></Menu>}
+                            > 
+                            </Menu>}
                     >
                     </Route>
 
