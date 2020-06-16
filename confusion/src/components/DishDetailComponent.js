@@ -1,5 +1,7 @@
 import React from 'react';
 import { Card, CardImg, CardBody, CardText, CardTitle } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 
 // disay dish details
@@ -27,16 +29,16 @@ function RenderDish(props) {
 }
 
 // render the dish comments
-function RenderComments(props) {
+function RenderCommentList(props) {
 
-    const { comments } = props;
+    const { dishCommentList } = props;
 
     // date.toLocaleDateString('en-US', options));
-    // <pre>{JSON.stringify(commentsFormatted)}</pre>
+    // <pre>{JSON.stringify(commentFormatted)}</pre>
 
     let commentItems = undefined;
 
-    if (comments == null) {
+    if (dishCommentList == null) {
 
         return (<div></div>);
         
@@ -48,7 +50,7 @@ function RenderComments(props) {
         const dateOptions = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
 
 
-        commentItems = comments.map(
+        commentItems = dishCommentList.map(
             (x, index) => {
 
                 let aDate = new Date(x.date);
@@ -87,7 +89,7 @@ function RenderComments(props) {
 
 const DishDetail = (props) => {
 
-    const { dish } = props;
+    const { dish, dishCommentList } = props;
 
     // console.log(props);
 
@@ -99,7 +101,7 @@ const DishDetail = (props) => {
                     <RenderDish dish={dish}></RenderDish>
                 </div>
                 <div className="col-12 col-md-6">
-                    <RenderComments comments={dish.comments}></RenderComments>
+                    <RenderCommentList dishCommentList={dishCommentList}></RenderCommentList>
                 </div>
             </div>
         </div>

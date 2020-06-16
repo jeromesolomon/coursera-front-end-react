@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import { Card, CardImg, CardImgOverlay, CardTitle } from 'reactstrap';
-
-import DishDetail from './DishDetailComponent';
+import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 function MenuItem(props) {
 
-    const { dish, onDishSelect}  = props;
+    const { dish }  = props;
 
     return(
 
-        <Card 
-            className="dishCard"
-            onClick={() => onDishSelect(dish.id)}>
-            <CardImg src={dish.image} alt={dish.name} />
-            <CardImgOverlay>
-                <CardTitle heading>{dish.name}</CardTitle>
-            </CardImgOverlay>
+        <Card className="dishCard">
+            <Link to={`/menu/${dish.id}`}>
+                <CardImg src={dish.image} alt={dish.name} />
+                <CardImgOverlay>
+                    <CardTitle heading>{dish.name}</CardTitle>
+                </CardImgOverlay>
+            </Link>
         </Card>
 
     );
@@ -38,13 +38,6 @@ class Menu extends Component {
 
     }
 
-    onDishSelect(dishId) {
-
-        // console.log("dishId = ",dishId);
-
-        this.setState({ selectedDishId: dishId});
-    }
-
     render() {
 
         // construct a list of card items
@@ -58,7 +51,6 @@ class Menu extends Component {
                     <div key={index} className="col-12 col-md-6">
                         <MenuItem 
                             dish={dish}
-                            onDishSelect={(dishId) => this.onDishSelect(dishId)}
                             >
                         </MenuItem>
                     </div>
@@ -69,12 +61,16 @@ class Menu extends Component {
         return (
             <div className="container">
                 <div className="row">
-                    {menu}
+                    <Breadcrumb>
+                        <BreadcrumbItem><Link to='/home'>Home</Link></BreadcrumbItem>
+                        <BreadcrumbItem active><Link to='/menu'>Menu</Link></BreadcrumbItem>
+                    </Breadcrumb>
+                    <div className="col-12">
+                        <h3>Menu</h3>
+                    </div>
                 </div>
                 <div className="row">
-                    <DishDetail dish={this.props.dishList.filter(
-                                (dish) => dish.id === this.state.selectedDishId)[0]}>
-                    </DishDetail>
+                    {menu}
                 </div>
             </div>
         );
