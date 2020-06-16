@@ -76,7 +76,7 @@ class MainComponent extends Component {
 
                     <Route exact path='/aboutus' component={
                         () => <About
-                            leaders={this.state.leaderList}
+                            leaderList={this.state.leaderList}
                             >
                             </About>}
                     >
