@@ -7947,12 +7947,16 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .dishDetailCard {
-  border: 1px solid #F67280;
+  border: 1px solid #083358;
   margin: 10px;
 }
 
+.dishDetailCardText {
+  padding: 10px;
+}
+
 .dishCommentCard {
-  border: 0px;
+  border: 1px solid #F67280;
   margin: 10px;
 }
 

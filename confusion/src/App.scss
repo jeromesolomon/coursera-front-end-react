@@ -33,12 +33,18 @@ $text-padding: 15px;
 
 
 .dishDetailCard {
-    border: 1px solid $secondary;
+    border: 1px solid $primary;
+    // background-color: $light-secondary;
     margin: $card-margin;
 }
 
+.dishDetailCardText {
+    padding: 10px;
+}
+
 .dishCommentCard {
-    border: 0px;
+    border: 1px solid $secondary;
+    // background-color: $light-secondary;
     margin: $card-margin;
 }
 

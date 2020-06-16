@@ -18,7 +18,7 @@ function RenderDish(props) {
                     <CardBody>
                         <CardTitle heading>{dish.name}</CardTitle>
                     </CardBody>
-                    <CardText>
+                    <CardText className="dishDetailCardText">
                         {dish.description}
                     </CardText> 
                 </Card>
@@ -72,7 +72,7 @@ function RenderCommentList(props) {
                     <CardBody>
                         <CardTitle heading><h4>Comments</h4></CardTitle>
                     </CardBody>
-                    <CardText>
+                    <CardText className="dishDetailCardText">
                         <ul class="list-unstyled">
                             {commentItems}
                         </ul>
@@ -96,6 +96,18 @@ const DishDetail = (props) => {
     if (dish != null) {
         return (
         <div className="container">
+            <div className="row">
+                <Breadcrumb>
+                    <BreadcrumbItem><Link to='/home'>Home</Link></BreadcrumbItem>
+                    <BreadcrumbItem active><Link to='/menu'>Menu</Link></BreadcrumbItem>
+                    <BreadcrumbItem active>{dish.name}</BreadcrumbItem>
+                </Breadcrumb>
+            </div>
+            <div className="row">
+                <div className="col-12">
+                        <h3>{dish.name}</h3>
+                </div>
+            </div>
             <div className="row">
                 <div className="col-12 col-md-6">
                     <RenderDish dish={dish}></RenderDish>

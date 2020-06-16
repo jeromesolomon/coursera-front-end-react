@@ -65,6 +65,8 @@ class Menu extends Component {
                         <BreadcrumbItem><Link to='/home'>Home</Link></BreadcrumbItem>
                         <BreadcrumbItem active><Link to='/menu'>Menu</Link></BreadcrumbItem>
                     </Breadcrumb>
+                </div>
+                <div className="row">
                     <div className="col-12">
                         <h3>Menu</h3>
                     </div>
