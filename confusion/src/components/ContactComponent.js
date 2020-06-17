@@ -34,6 +34,7 @@ class ContactComponent extends Component {
 
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleBlur = this.handleBlur.bind(this);
         
     }
 
@@ -88,7 +89,7 @@ class ContactComponent extends Component {
         if (this.state.touched.telnum && !phoneRegex.test(telnum))
             errors.telnum = 'Telephone number should be all digits';
 
-        // validate email with regular expression
+        // validate email with solid regular expression (blah@blah.???)
         const emailRegex = /^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+).([a-zA-Z]{2,5})$/;
         if (this.state.touched.telnum && !emailRegex.test(email))
             errors.email = 'Invalid email';
@@ -199,6 +200,13 @@ class ContactComponent extends Component {
                                         onBlur={this.handleBlur('email')}
                                         onChange={this.handleInputChange} />
                                     <FormFeedback>{errors.email}</FormFeedback>
+                                </Col>
+                            </FormGroup>
+                            <FormGroup row>
+                                <Col md={{size: 10, offset: 2}}>
+                                    <Button type="submit" color="primary">
+                                        Send Feedback
+                                    </Button>
                                 </Col>
                             </FormGroup>
                         </Form>
