@@ -16,7 +16,7 @@ function RenderDish(props) {
                     className="dishDetailCard">
                     <CardImg src={dish.image} alt={dish.name} />
                     <CardBody>
-                        <CardTitle heading>{dish.name}</CardTitle>
+                        <CardTitle>{dish.name}</CardTitle>
                     </CardBody>
                     <CardText className="dishDetailCardText">
                         {dish.description}
@@ -70,7 +70,7 @@ function RenderCommentList(props) {
                 <Card 
                     className="dishCommentCard">
                     <CardBody>
-                        <CardTitle heading><h4>Comments</h4></CardTitle>
+                        <CardTitle><h4>Comments</h4></CardTitle>
                     </CardBody>
                     <CardText className="dishDetailCardText">
                         <ul class="list-unstyled">

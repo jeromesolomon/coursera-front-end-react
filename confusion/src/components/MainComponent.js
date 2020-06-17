@@ -55,11 +55,27 @@ class MainComponent extends Component {
 
             let menuDishId = parseInt(match.params.dishId);
 
+            console.log("menuDishId = ", menuDishId);
+
+            let selectedDishList = this.state.dishList.filter((dish) => dish.id === menuDishId);
+
+            // if the dish item does not exist, redirect back to the menu
+            if (selectedDishList.length === 0) {
+                // return(<div>Dish id {menuDishId.id} not found.</div>);
+                return (<Redirect to="/menu" />);
+            }
+
+            let selectedDish = selectedDishList[0];
+
+            let selectedDishCommentList = this.state.commentList.filter(
+                (comment) => comment.dishId === menuDishId);
+
+            console.log("selectedDish = ", selectedDish);
+            console.log("selectedDishCommentList = ", selectedDishCommentList);  
+
             return (
-                <DishDetail dish={this.state.dishList.filter(
-                                (dish) => dish.id === menuDishId)[0]}
-                            dishCommentList={this.state.commentList.filter(
-                                (comment) => comment.dishId === menuDishId)}
+                <DishDetail dish={selectedDish}
+                            dishCommentList={selectedDishCommentList}
                 >
                 </DishDetail>
             );

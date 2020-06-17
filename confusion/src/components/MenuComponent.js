@@ -13,7 +13,7 @@ function MenuItem(props) {
             <Link to={`/menu/${dish.id}`}>
                 <CardImg src={dish.image} alt={dish.name} />
                 <CardImgOverlay>
-                    <CardTitle heading>{dish.name}</CardTitle>
+                    <CardTitle>{dish.name}</CardTitle>
                 </CardImgOverlay>
             </Link>
         </Card>
