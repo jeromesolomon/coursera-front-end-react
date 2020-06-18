@@ -26,6 +26,11 @@ $card-margin: 10px;
 $text-padding: 15px;
 
 
+#loginButton {
+    border: 1px solid $secondary;
+    color: white;
+}
+
 .dishCard {
     border: 1px solid $primary;
     margin: $card-margin;

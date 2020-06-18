@@ -7941,6 +7941,11 @@ a.text-dark:hover, a.text-dark:focus {
   }
 }
 
+#loginButton {
+  border: 1px solid #F67280;
+  color: white;
+}
+
 .dishCard {
   border: 1px solid #083358;
   margin: 10px;
