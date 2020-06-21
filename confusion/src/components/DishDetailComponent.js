@@ -29,6 +29,7 @@ function CommentForm(props) {
                 id="commentFormButton"
                 outline onClick={ () => { toggleModal(); } }
             >
+            <i className="fa fa-edit fa-lg"></i>
             Submit Comment
             </Button>
         </React.Fragment>
@@ -205,10 +206,10 @@ class DishDetail extends Component {
                                 <div className="col-12">
                                     <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
 
-                                        <Row>Rating</Row>
+                                        Rating
                                         <Row className="form-group">
                                             <Col>
-                                                <Control.select model=".ratingType" name="ratingType"
+                                                <Control.select model=".rating" name="rating"
                                                     className="form-control">
                                                     <option>1</option>
                                                     <option>2</option>
@@ -219,9 +220,9 @@ class DishDetail extends Component {
                                             </Col>
                                         </Row>
                                         
+                                        Your Name
                                         <Row className="form-group">
                                             <Col>
-                                                <Row>Your Name</Row>
                                                 <Control.text model=".name" id="name" name="name"
                                                     placeholder="Name"
                                                     className="form-control"
@@ -241,16 +242,17 @@ class DishDetail extends Component {
                                                 />
                                             </Col>
                                         </Row>
-                                        <Row>Comment</Row>
+
+                                        Comment
                                         <Row className="form-group">
                                             <Col>
-                                                <Control.textarea model=".message" id="message" name="message"
+                                                <Control.textarea model=".comment" id="comment" name="comment"
                                                     rows="6"
                                                     className="form-control" />
                                             </Col>
                                         </Row>
                                         <Row className="form-group">
-                                            <Col md={{size:10, offset: 2}}>
+                                            <Col>
                                                 <Button type="submit" color="primary">
                                                 Submit
                                                 </Button>
