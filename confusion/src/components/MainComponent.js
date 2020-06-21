@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
-
-// shared data
-import { DISHLIST } from '../shared/dishList';
-import { COMMENTLIST } from '../shared/commentList';
-import { PROMOTIONLIST } from '../shared/promotionList';
-import { LEADERLIST } from '../shared/leaderList';
+import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 // import  components
 import Header from './HeaderComponent';
@@ -16,33 +11,27 @@ import Contact from './ContactComponent';
 import About from './AboutComponent';
 import DishDetail from './DishDetailComponent';
 
+// maps a redux store state (in reducer.js) into props that will be made
+// available for react components by the provider component
+const mapStateToProps = (state) => {
+    return {
+        dishList: state.dishList,
+        commentList: state.commentList,
+        promotionList: state.promotionList,
+        leaderList: state.leaderList
+    }
+}
 
 class MainComponent extends Component {
-
-    constructor(props) {
-
-        super(props);
-
-        // add dish list to the apps state
-        this.state = {
-        dishList: DISHLIST,
-        commentList: COMMENTLIST,
-        promotionList: PROMOTIONLIST,
-        leaderList: LEADERLIST
-        };
-
-    }
-
-    
 
     render() {
 
         const HomePage = () => {
             return(
                 <Home
-                dish={this.state.dishList.filter((dish) => dish.featured)[0]}
-                promotion={this.state.promotionList.filter((promo) => promo.featured)[0]}
-                leader={this.state.leaderList.filter((leader) => leader.featured)[0]}
+                dish={this.props.dishList.filter((dish) => dish.featured)[0]}
+                promotion={this.props.promotionList.filter((promo) => promo.featured)[0]}
+                leader={this.props.leaderList.filter((leader) => leader.featured)[0]}
                 >
                 </Home>
             );
@@ -57,7 +46,7 @@ class MainComponent extends Component {
 
             console.log("menuDishId = ", menuDishId);
 
-            let selectedDishList = this.state.dishList.filter((dish) => dish.id === menuDishId);
+            let selectedDishList = this.props.dishList.filter((dish) => dish.id === menuDishId);
 
             // if the dish item does not exist, redirect back to the menu
             if (selectedDishList.length === 0) {
@@ -67,7 +56,7 @@ class MainComponent extends Component {
 
             let selectedDish = selectedDishList[0];
 
-            let selectedDishCommentList = this.state.commentList.filter(
+            let selectedDishCommentList = this.props.commentList.filter(
                 (comment) => comment.dishId === menuDishId);
 
             console.log("selectedDish = ", selectedDish);
@@ -92,7 +81,7 @@ class MainComponent extends Component {
 
                     <Route exact path='/aboutus' component={
                         () => <About
-                            leaderList={this.state.leaderList}
+                            leaderList={this.props.leaderList}
                             >
                             </About>}
                     >
@@ -100,7 +89,7 @@ class MainComponent extends Component {
 
                     <Route exact path='/menu' component={
                         () => <Menu 
-                                dishList={this.state.dishList}
+                                dishList={this.props.dishList}
                             > 
                             </Menu>}
                     >
@@ -124,4 +113,5 @@ class MainComponent extends Component {
 
 }
 
-export default MainComponent;
+// connect main component to redux with router
+export default withRouter(connect(mapStateToProps)(MainComponent));
