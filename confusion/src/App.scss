@@ -25,9 +25,19 @@ $light-primary:#80a4c4;
 $card-margin: 10px;
 $text-padding: 15px;
 
+#commentFormButton {
+    max-width: 50%;
+    margin: $card-margin;
+}
 
 #loginButton {
     border: 1px solid $secondary;
+    color: white;
+}
+
+.darkButton {
+    border: 1px solid $secondary;
+    background-color: $primary;
     color: white;
 }
 

@@ -7941,8 +7941,19 @@ a.text-dark:hover, a.text-dark:focus {
   }
 }
 
+#commentFormButton {
+  max-width: 50%;
+  margin: 10px;
+}
+
 #loginButton {
   border: 1px solid #F67280;
+  color: white;
+}
+
+.darkButton {
+  border: 1px solid #F67280;
+  background-color: #083358;
   color: white;
 }
 
