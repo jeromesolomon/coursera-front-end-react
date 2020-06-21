@@ -58,7 +58,7 @@ function RenderCommentList(props) {
                 let d = aDate.toLocaleDateString(undefined, dateOptions)
 
                 return (
-                    <div className="dishComment">
+                    <div className="dishComment" key={index}>
                         <li>{x.comment}</li>
                         <li>-- {x.author}, {d}</li>
                     </div>
@@ -73,7 +73,7 @@ function RenderCommentList(props) {
                         <CardTitle><h4>Comments</h4></CardTitle>
                     </CardBody>
                     <CardText className="dishDetailCardText">
-                        <ul class="list-unstyled">
+                        <ul className="list-unstyled">
                             {commentItems}
                         </ul>
                     </CardText> 
