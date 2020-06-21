@@ -1,10 +1,21 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardBody, CardText, CardTitle, Button } from 'reactstrap';
+import { Card, CardImg, CardBody, CardText, CardTitle } from 'reactstrap';
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { Form, FormGroup, Label, Input } from 'reactstrap';
+
+import { Button, Row, Col } from 'reactstrap';
+import { Control, LocalForm, Errors } from 'react-redux-form';
+
+//
+// form validation functions
+//
+const required = (val) => val && (val.length>0);
+// function of functions
+const maxLength = (len) => (val) => !(val) || (val.length <= len);
+const minLength = (len) => (val) => val && (val.length >= len);
 
 // comment form component
 function CommentForm(props) {
@@ -125,7 +136,7 @@ class DishDetail extends Component {
           dishCommentList: props.dishCommentList
         };
 
-        this.handleLogin = this.handleLogin.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
 
       }
 
@@ -137,12 +148,9 @@ class DishDetail extends Component {
 
     }
 
-    handleLogin(event) {
-        this.toggleModal();
-        alert("Username: " + this.username.value + " Password: " + this.password.value
-            + " Remember: " + this.remember.checked);
-        event.preventDefault();
-
+    handleSubmit(values) {
+        console.log('Current State is: ' + JSON.stringify(values));
+        alert('Current State is: ' + JSON.stringify(values, null, 2));
     }
 
     
@@ -192,26 +200,66 @@ class DishDetail extends Component {
                         Login
                     </ModalHeader>
                     <ModalBody>
-                    <Form onSubmit={this.handleLogin}>
-                            <FormGroup>
-                                <Label htmlFor="username">Username</Label>
-                                <Input type="text" id="username" name="username"
-                                    innerRef={(input) => this.username = input} />
-                            </FormGroup>
-                            <FormGroup>
-                                <Label htmlFor="password">Password</Label>
-                                <Input type="password" id="password" name="password"
-                                    innerRef={(input) => this.password = input}  />
-                            </FormGroup>
-                            <FormGroup check>
-                                <Label check>
-                                    <Input type="checkbox" name="remember"
-                                    innerRef={(input) => this.remember = input}  />
-                                    Remember me
-                                </Label>
-                            </FormGroup>
-                            <Button type="submit" value="submit" color="primary">Login</Button>
-                        </Form>
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-12">
+                                    <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
+
+                                        <Row>Rating</Row>
+                                        <Row className="form-group">
+                                            <Col>
+                                                <Control.select model=".ratingType" name="ratingType"
+                                                    className="form-control">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                </Control.select>
+                                            </Col>
+                                        </Row>
+                                        
+                                        <Row className="form-group">
+                                            <Col>
+                                                <Row>Your Name</Row>
+                                                <Control.text model=".name" id="name" name="name"
+                                                    placeholder="Name"
+                                                    className="form-control"
+                                                    validators={{
+                                                        required, minLength: minLength(3), maxLength: maxLength(15)
+                                                    }}
+                                                    />
+                                                <Errors
+                                                    className="text-danger"
+                                                    model=".name"
+                                                    show="touched"
+                                                    messages={{
+                                                        required: 'Required',
+                                                        minLength: 'Must be greater than 2 characters',
+                                                        maxLength: 'Must be 15 characters or less'
+                                                    }}
+                                                />
+                                            </Col>
+                                        </Row>
+                                        <Row>Comment</Row>
+                                        <Row className="form-group">
+                                            <Col>
+                                                <Control.textarea model=".message" id="message" name="message"
+                                                    rows="6"
+                                                    className="form-control" />
+                                            </Col>
+                                        </Row>
+                                        <Row className="form-group">
+                                            <Col md={{size:10, offset: 2}}>
+                                                <Button type="submit" color="primary">
+                                                Submit
+                                                </Button>
+                                            </Col>
+                                        </Row>
+                                    </LocalForm>
+                                </div>
+                            </div>
+                        </div>
                     </ModalBody>
                 </Modal>
             </React.Fragment>
