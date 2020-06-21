@@ -4,7 +4,6 @@ import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
-import { Form, FormGroup, Label, Input } from 'reactstrap';
 
 import { Button, Row, Col } from 'reactstrap';
 import { Control, LocalForm, Errors } from 'react-redux-form';
@@ -20,7 +19,7 @@ const minLength = (len) => (val) => val && (val.length >= len);
 // comment form component
 function CommentForm(props) {
 
-    const { dishCommentList, toggleModal } = props;
+    const { toggleModal } = props;
 
     return (
         <React.Fragment>
@@ -110,8 +109,7 @@ function RenderCommentList(props) {
                             {commentItems}
                         </ul>
                     </CardText> 
-                    <CommentForm 
-                        dishCommentList={dishCommentList}
+                    <CommentForm
                         toggleModal = { toggleModal }
                     >
                     </CommentForm>
