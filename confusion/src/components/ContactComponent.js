@@ -78,7 +78,7 @@ class ContactComponent extends Component {
 
         // last name validation
         if (this.state.touched.lastname && lastname.length < 2)
-        errors.firstname = 'First name should be 2 or more characters';
+        errors.lastname = 'Last name should be 2 or more characters';
 
         if (this.state.touched.lastname && lastname.length >15)
             errors.lastname = 'Last name should be 15 or less characters';
