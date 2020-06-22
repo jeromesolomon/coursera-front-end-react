@@ -11,10 +11,12 @@ import { Control, LocalForm, Errors } from 'react-redux-form';
 //
 // form validation functions
 //
-const required = (val) => val && (val.length>0);
+const required = (val) => { return (val && (val.length>0)); }
 // function of functions
-const maxLength = (len) => (val) => !(val) || (val.length <= len);
-const minLength = (len) => (val) => val && (val.length >= len);
+const maxLength = (len) => (val) => { return ( !(val) || (val.length <= len) ); }
+const minLength = (len) => (val) => { return ( val && (val.length >= len) ); }
+
+const requiredSelect = (val) => {  return !isNaN(val); }
 
 // comment form component
 function CommentForm(props) {
@@ -208,13 +210,26 @@ class DishDetail extends Component {
                                         <Row className="form-group">
                                             <Col>
                                                 <Control.select model=".rating" name="rating"
-                                                    className="form-control">
+                                                    className="form-control"
+                                                    validators={{
+                                                        requiredSelect
+                                                    }}
+                                                >
+                                                    <option>--</option>
                                                     <option>1</option>
                                                     <option>2</option>
                                                     <option>3</option>
                                                     <option>4</option>
                                                     <option>5</option>
                                                 </Control.select>
+                                                <Errors
+                                                    className="text-danger"
+                                                    model=".rating"
+                                                    show="touched"
+                                                    messages={{
+                                                        requiredSelect: 'Please select a rating'
+                                                    }}
+                                                />
                                             </Col>
                                         </Row>
                                         
