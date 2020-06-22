@@ -251,7 +251,7 @@ class DishDetail extends Component {
                                         </Row>
                                         <Row className="form-group">
                                             <Col>
-                                                <Button type="submit" color="primary">
+                                                <Button className="darkButton" type="submit">
                                                 Submit
                                                 </Button>
                                             </Col>
