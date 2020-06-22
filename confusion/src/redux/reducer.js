@@ -18,5 +18,8 @@ export const initialState = {
 // returns a new state
 //
 export const Reducer = (state = initialState, action) => {
+
     return state;
-}
+    
+};
+
