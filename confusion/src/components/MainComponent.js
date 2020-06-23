@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { addComment } from '../redux/actionCreators';
 
 // import  components
 import Header from './HeaderComponent';
@@ -19,6 +20,15 @@ const mapStateToProps = (state) => {
         commentList: state.commentList,
         promotionList: state.promotionList,
         leaderList: state.leaderList
+    }
+}
+
+// maps the dispatch actions to react components
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addComment: (dishId, rating, author, comment) => {
+            dispatch(addComment(dishId, rating, author, comment));
+        }
     }
 }
 
@@ -65,6 +75,7 @@ class MainComponent extends Component {
             return (
                 <DishDetail dish={selectedDish}
                             dishCommentList={selectedDishCommentList}
+                            addComment={this.props.addComment}
                 >
                 </DishDetail>
             );
@@ -114,4 +125,4 @@ class MainComponent extends Component {
 }
 
 // connect main component to redux with router
-export default withRouter(connect(mapStateToProps)(MainComponent));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MainComponent));

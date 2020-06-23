@@ -132,9 +132,10 @@ class DishDetail extends Component {
         super(props);
     
         this.state = {
-          isModalOpen: false,
-          dish: props.dish,
-          dishCommentList: props.dishCommentList
+            isModalOpen: false,
+            isValidComment: false,
+            dish: props.dish,
+            dishCommentList: props.dishCommentList
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -150,11 +151,21 @@ class DishDetail extends Component {
     }
 
     handleSubmit(values) {
-        console.log('Current State is: ' + JSON.stringify(values));
+        console.log('Current State is: ', values);
         alert('Current State is: ' + JSON.stringify(values, null, 2));
     }
 
-    
+    handleUpdate(form) {
+        // console.log('form = ',form);
+        // console.log('form.rating.valid = ', form.rating.valid);
+        // console.log('form.name.valid = ', form.name.valid);
+
+        // to enable/disable submut button
+        this.setState({ 
+            isValidComment: (form.rating.valid && form.name.valid && form.comment.valid)
+        });
+
+    }
 
     // console.log(props);
 
@@ -198,13 +209,16 @@ class DishDetail extends Component {
                     toggle={ () => { this.toggleModal(); } }
                 >
                     <ModalHeader toggle={ () => { this.toggleModal(); } }>
-                        Login
+                        Comment on {dish.name}
                     </ModalHeader>
                     <ModalBody>
                         <div className="container">
                             <div className="row">
                                 <div className="col-12">
-                                    <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
+                                    <LocalForm 
+                                        onSubmit={(values) => this.handleSubmit(values)}
+                                        onUpdate={(form) => this.handleUpdate(form)}
+                                    >
 
                                         Rating
                                         <Row className="form-group">
@@ -242,7 +256,7 @@ class DishDetail extends Component {
                                                     validators={{
                                                         required, minLength: minLength(3), maxLength: maxLength(15)
                                                     }}
-                                                    />
+                                                />
                                                 <Errors
                                                     className="text-danger"
                                                     model=".name"
@@ -261,12 +275,27 @@ class DishDetail extends Component {
                                             <Col>
                                                 <Control.textarea model=".comment" id="comment" name="comment"
                                                     rows="6"
-                                                    className="form-control" />
+                                                    className="form-control" 
+                                                    validators={{
+                                                        required, maxLength: maxLength(1000)
+                                                    }}
+                                                />
+                                                <Errors
+                                                    className="text-danger"
+                                                    model=".comment"
+                                                    show="touched"
+                                                    messages={{
+                                                        required: 'Required',
+                                                        maxLength: 'Must be 1000 characters or less'
+                                                    }}
+                                                />
                                             </Col>
                                         </Row>
                                         <Row className="form-group">
                                             <Col>
-                                                <Button className="darkButton" type="submit">
+                                                <Button className="darkButton" type="submit"
+                                                    disabled={!this.state.isValidComment}
+                                                >
                                                 Submit
                                                 </Button>
                                             </Col>
