@@ -65,7 +65,7 @@ function RenderDish(props) {
 // render the dish comments
 function RenderCommentList(props) {
 
-    const { dishCommentList, toggleModal } = props;
+    const { dishCommentList, toggleModal, addComment, dishId } = props;
 
     // date.toLocaleDateString('en-US', options));
     // <pre>{JSON.stringify(commentFormatted)}</pre>
@@ -113,6 +113,8 @@ function RenderCommentList(props) {
                     </CardText> 
                     <CommentForm
                         toggleModal = { toggleModal }
+                        addComment={addComment}
+                        dishId={dishId}
                     >
                     </CommentForm>
                 </Card>
@@ -133,9 +135,7 @@ class DishDetail extends Component {
     
         this.state = {
             isModalOpen: false,
-            isValidComment: false,
-            dish: props.dish,
-            dishCommentList: props.dishCommentList
+            isValidComment: false
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -151,8 +151,17 @@ class DishDetail extends Component {
     }
 
     handleSubmit(values) {
+
+        // toggle off the modal
+        this.toggleModal();
+
         console.log('Current State is: ', values);
-        alert('Current State is: ' + JSON.stringify(values, null, 2));
+        // alert('Current State is: ' + JSON.stringify(values, null, 2));
+
+        // add comment to list by dispatching a addComment action to update
+        // the react redux store/state
+        this.props.addComment(this.props.dish.id, values.rating, values.name, values.comment);
+    
     }
 
     handleUpdate(form) {
@@ -171,8 +180,8 @@ class DishDetail extends Component {
 
     render() {
 
-        let dish = this.state.dish;
-        let dishCommentList = this.state.dishCommentList;
+        let dish = this.props.dish;
+        let dishCommentList = this.props.dishCommentList;
 
         if (dish != null) {
             return (
@@ -198,6 +207,8 @@ class DishDetail extends Component {
                             <RenderCommentList 
                                 dishCommentList={dishCommentList}
                                 toggleModal={ () => { this.toggleModal(); } }
+                                addComment={this.props.addComment}
+                                dishId={this.props.dish.id}
                             >
 
                                 </RenderCommentList>

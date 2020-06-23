@@ -14,9 +14,17 @@ export const CommentListReducer = (state = COMMENTLIST, action) => {
             // set the date to current ISO string formatted time/date
             action.comment.date = new Date().toISOString();
             
-            // clone/copy into emtpty {} object, and then return a 
-            // new state (commment list) using Object.assign
-            let newState = Object.assign({}, action.comment);
+            // clone/copy a new list/state (use Object.assign if using an object)
+            // this is a shallow element by element copy, using spread
+            let newState = [...state];
+
+            // add the comment to the list
+            newState.push(action.comment);
+
+            console.log("state=",state);
+            console.log("newState=",newState);
+
+            // return a new state (commment list)
             return newState;
 
         default:
