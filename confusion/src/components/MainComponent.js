@@ -43,7 +43,7 @@ class MainComponent extends Component {
     componentDidMount() {
 
         // fetch the dish list when component is mounted
-        // this.props.fetchDishList();
+        this.props.fetchDishList();
 
     }
 

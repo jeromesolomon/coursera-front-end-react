@@ -9,8 +9,8 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import * as actionCreators from './actionCreators';
 
 // redux thunk middleware
-import { thunk } from "redux-thunk";
-import { logger } from "redux-logger";
+import thunk from "redux-thunk";
+import logger from "redux-logger";
 import { applyMiddleware } from 'redux';
 
 // middleware enhancers
@@ -20,8 +20,7 @@ const middlewareEnhancers = applyMiddleware(thunk, logger);
 const composedEnhancers = composeWithDevTools({
     actionCreators,
     trace: true,
-    traceLimit: 25,
-    ...middlewareEnhancers
+    traceLimit: 25
     }
 );
 
@@ -37,7 +36,7 @@ export const ConfigureStore = () => {
             promotionList: PromotionListReducer,
             leaderList: LeaderListReducer
         }),
-        composedEnhancers());
+        middlewareEnhancers);
 
     return store;
 
