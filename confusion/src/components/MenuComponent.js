@@ -3,6 +3,8 @@ import { Card, CardImg, CardImgOverlay, CardTitle } from 'reactstrap';
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
+import { Loading } from './LoadingComponent';
+
 function MenuItem(props) {
 
     const { dish }  = props;
@@ -35,13 +37,12 @@ class Menu extends Component {
         };
 
 
-
     }
 
     render() {
 
         // construct a list of card items
-        const menu = this.props.dishList.map(
+        const menu = this.props.dishInfo.dishList.map(
             (dish, index) => {
 
                 return (
@@ -56,6 +57,28 @@ class Menu extends Component {
                     </div>
                 );
             });
+
+        if (this.props.dishInfo.isLoading) {
+            return(
+                <div className="container">
+                    <div className="row">
+                        <Loading></Loading>
+                    </div>
+                </div>
+    
+            );
+        }
+    
+        if (this.props.dishInfo.errorMessage) {
+            return(
+                <div className="container">
+                    <div className="row">            
+                        <h4>{this.props.dishInfo.errorMessage}</h4>
+                    </div>
+                </div>
+            );
+        }
+        
 
         // use list of items in each row of container/grid
         return (

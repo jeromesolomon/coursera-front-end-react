@@ -2,7 +2,33 @@ import React from 'react';
 import { Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle} from 'reactstrap';
 
-function RenderCard({item}) {
+import { Loading } from './LoadingComponent';
+
+function RenderCard(props) {
+
+    const { item, isLoading, errorMessage } = props;
+
+    // check if dishes are loading
+    if (isLoading) {
+        return(
+            <div className="container">
+                <div className="row">
+                    <Loading></Loading>
+                </div>
+            </div>
+
+        );
+    }
+
+    if (errorMessage) {
+        return(
+            <div className="container">
+                <div className="row">            
+                    <h4>{props.errorMessage}</h4>
+                </div>
+            </div>
+        );
+    }
 
     return(
         <Card>
@@ -18,17 +44,30 @@ function RenderCard({item}) {
 }
 
 function Home(props) {
+
     return(
         <div className="container">
             <div className="row align-items-start">
                 <div className="col-12 col-md m-1">
-                    <RenderCard item={props.dish} />
+                    <RenderCard 
+                        item={props.dish}
+                        isLoading={props.isLoading}
+                        errorMessage={props.errorMessage}
+                    />
                 </div>
                 <div className="col-12 col-md m-1">
-                    <RenderCard item={props.promotion} />
+                    <RenderCard
+                        item={props.promotion}
+                        isLoading={props.isLoading}
+                        errorMessage={props.errorMessage}
+                    />
                 </div>
                 <div className="col-12 col-md m-1">
-                    <RenderCard item={props.leader} />
+                    <RenderCard
+                        item={props.leader}
+                        isLoading={props.isLoading}
+                        errorMessage={props.errorMessage}
+                    />
                 </div>
             </div>
         </div>

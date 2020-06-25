@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addComment } from '../redux/actionCreators';
+import { addComment, fetchDishList } from '../redux/actionCreators';
 
 // import  components
 import Header from './HeaderComponent';
@@ -16,7 +16,7 @@ import DishDetail from './DishDetailComponent';
 // available for react components by the provider component
 const mapStateToProps = (state) => {
     return {
-        dishList: state.dishList,
+        dishInfo: state.dishInfo,
         commentList: state.commentList,
         promotionList: state.promotionList,
         leaderList: state.leaderList
@@ -28,18 +28,33 @@ const mapDispatchToProps = (dispatch) => {
     return {
         addComment: (dishId, rating, author, comment) => {
             dispatch(addComment(dishId, rating, author, comment));
-        }
+            },
+        fetchDishList: () => {
+            dispatch(fetchDishList());
+            }
+
     }
 }
 
 class MainComponent extends Component {
+
+    // lifecycle componentDidMount method of component that gets called just after component 
+    // is mounted into view of application
+    componentDidMount() {
+
+        // fetch the dish list when component is mounted
+        // this.props.fetchDishList();
+
+    }
 
     render() {
 
         const HomePage = () => {
             return(
                 <Home
-                dish={this.props.dishList.filter((dish) => dish.featured)[0]}
+                dish={this.props.dishInfo.dishList.filter((dish) => dish.featured)[0]}
+                isLoading={this.props.dishInfo.isLoading}
+                errorMessage={this.props.dishInfo.errorMessage}
                 promotion={this.props.promotionList.filter((promo) => promo.featured)[0]}
                 leader={this.props.leaderList.filter((leader) => leader.featured)[0]}
                 >
@@ -56,7 +71,7 @@ class MainComponent extends Component {
 
             console.log("menuDishId = ", menuDishId);
 
-            let selectedDishList = this.props.dishList.filter((dish) => dish.id === menuDishId);
+            let selectedDishList = this.props.dishInfo.dishList.filter((dish) => dish.id === menuDishId);
 
             // if the dish item does not exist, redirect back to the menu
             if (selectedDishList.length === 0) {
@@ -100,7 +115,7 @@ class MainComponent extends Component {
 
                     <Route exact path='/menu' component={
                         () => <Menu 
-                                dishList={this.props.dishList}
+                                dishInfo={this.props.dishInfo}
                             > 
                             </Menu>}
                     >

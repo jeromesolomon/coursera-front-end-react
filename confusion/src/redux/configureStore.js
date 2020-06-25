@@ -1,4 +1,4 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, compose } from 'redux';
 import { DishListReducer } from './dishListReducer';
 import { CommentListReducer } from './commentListReducer';
 import { PromotionListReducer } from './promotionListReducer';
@@ -8,19 +8,22 @@ import { LeaderListReducer } from './leaderListReducer';
 import { composeWithDevTools } from "redux-devtools-extension";
 import * as actionCreators from './actionCreators';
 
-/*
-const enhancers = compose(
-    window.devToolsExtension ? window.devToolsExtension() : f => f
-);
-*/
+// redux thunk middleware
+import { thunk } from "redux-thunk";
+import { logger } from "redux-logger";
+import { applyMiddleware } from 'redux';
 
-// get the enhancers w/ action tracing
-const composeEnhancers = composeWithDevTools({
+// middleware enhancers
+const middlewareEnhancers = applyMiddleware(thunk, logger);
+
+// enhancers w/ action tracing, and middleware
+const composedEnhancers = composeWithDevTools({
     actionCreators,
     trace: true,
     traceLimit: 25,
-  });
-
+    ...middlewareEnhancers
+    }
+);
 
 // function to configure redux-react store
 export const ConfigureStore = () => {
@@ -29,12 +32,12 @@ export const ConfigureStore = () => {
     // different parts of the redux store's state
     const store = createStore(
         combineReducers({
-            dishList: DishListReducer,
+            dishInfo: DishListReducer,
             commentList: CommentListReducer,
             promotionList: PromotionListReducer,
             leaderList: LeaderListReducer
         }),
-        composeEnhancers());
+        composedEnhancers());
 
     return store;
 

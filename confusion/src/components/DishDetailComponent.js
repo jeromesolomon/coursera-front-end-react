@@ -8,6 +8,9 @@ import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { Button, Row, Col } from 'reactstrap';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 
+import { Loading } from './LoadingComponent';
+
+
 //
 // form validation functions
 //
@@ -180,6 +183,28 @@ class DishDetail extends Component {
 
     render() {
 
+        // check if dishes are loading
+        if (this.props.isLoading) {
+            return(
+                <div className="container">
+                    <div className="row">
+                        <Loading></Loading>
+                    </div>
+                </div>
+
+            );
+        }
+
+        if (this.props.errorMessage) {
+            return(
+                <div className="container">
+                    <div className="row">            
+                        <h4>{this.props.errorMessage}</h4>
+                    </div>
+                </div>
+            );
+        }
+
         let dish = this.props.dish;
         let dishCommentList = this.props.dishCommentList;
 
@@ -241,11 +266,11 @@ class DishDetail extends Component {
                                                     }}
                                                 >
                                                     <option>--</option>
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
                                                     <option>5</option>
+                                                    <option>4</option>
+                                                    <option>3</option>
+                                                    <option>2</option>
+                                                    <option>1</option>
                                                 </Control.select>
                                                 <Errors
                                                     className="text-danger"
