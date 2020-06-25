@@ -1,8 +1,12 @@
-import { createStore, combineReducers, compose } from 'redux';
+import { createStore, combineReducers } from 'redux';
+import { createForms} from 'react-redux-form';
+
+// import redux store elements
 import { DishListReducer } from './dishListReducer';
 import { CommentListReducer } from './commentListReducer';
 import { PromotionListReducer } from './promotionListReducer';
 import { LeaderListReducer } from './leaderListReducer';
+import { InitialFeedbackForm } from './forms';
 
 // add redux dev tools with action tracing turned on
 import { composeWithDevTools } from "redux-devtools-extension";
@@ -36,7 +40,10 @@ export const ConfigureStore = () => {
             dishInfo: DishListReducer,
             commentList: CommentListReducer,
             promotionList: PromotionListReducer,
-            leaderList: LeaderListReducer
+            leaderList: LeaderListReducer,
+            ...createForms({
+                feedback: InitialFeedbackForm
+            })
         }),
         allEnhancers);
 
