@@ -21,9 +21,6 @@ export const CommentListReducer = (state = COMMENTLIST, action) => {
             // add the comment to the list
             newState.push(action.comment);
 
-            console.log("state=",state);
-            console.log("newState=",newState);
-
             // return a new state (commment list)
             return newState;
 

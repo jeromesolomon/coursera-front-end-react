@@ -107,7 +107,7 @@ function RenderCommentList(props) {
                 <Card 
                     className="dishCommentCard">
                     <CardBody>
-                        <CardTitle><h4>Comments</h4></CardTitle>
+                        <CardTitle>Comments</CardTitle>
                     </CardBody>
                     <CardText className="dishDetailCardText">
                         <ul className="list-unstyled">

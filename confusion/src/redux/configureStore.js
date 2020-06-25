@@ -24,6 +24,8 @@ const composedEnhancers = composeWithDevTools({
     }
 );
 
+const allEnhancers = composedEnhancers(middlewareEnhancers)
+
 // function to configure redux-react store
 export const ConfigureStore = () => {
 
@@ -36,7 +38,7 @@ export const ConfigureStore = () => {
             promotionList: PromotionListReducer,
             leaderList: LeaderListReducer
         }),
-        middlewareEnhancers);
+        allEnhancers);
 
     return store;
 
