@@ -2,8 +2,8 @@ import { createStore, combineReducers } from 'redux';
 import { createForms} from 'react-redux-form';
 
 // import redux store elements
-import { DishListReducer } from './dishListReducer';
-import { CommentListReducer } from './commentListReducer';
+import { DishInfoReducer } from './dishInfoReducer';
+import { CommentInfoReducer } from './commentInfoReducer';
 import { PromotionListReducer } from './promotionListReducer';
 import { LeaderListReducer } from './leaderListReducer';
 import { InitialFeedbackForm } from './forms';
@@ -37,8 +37,8 @@ export const ConfigureStore = () => {
     // different parts of the redux store's state
     const store = createStore(
         combineReducers({
-            dishInfo: DishListReducer,
-            commentList: CommentListReducer,
+            dishInfo: DishInfoReducer,
+            commentInfo: CommentInfoReducer,
             promotionList: PromotionListReducer,
             leaderList: LeaderListReducer,
             ...createForms({

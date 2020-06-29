@@ -6,7 +6,7 @@ const initialState = {
     dishList: []
 };
 
-export const DishListReducer = (state = initialState, action) => {
+export const DishInfoReducer = (state = initialState, action) => {
 
     let newState = undefined;
 
@@ -15,7 +15,7 @@ export const DishListReducer = (state = initialState, action) => {
         case ActionTypes.ADD_DISHLIST:
 
             // create new state with some fields changed
-            newState = {...state, isLoading: false, errorMessage: null, dishList: action.payload}
+            newState = {...state, isLoading: false, errorMessage: null, dishList: action.payload};
             
             return newState;
 
@@ -29,7 +29,7 @@ export const DishListReducer = (state = initialState, action) => {
         case ActionTypes.DISHLIST_FAILED:
 
             // create new state with some fields changed
-            newState = {...state, isLoading: false, errorMessage: action.payload, dishList: []}
+            newState = {...state, isLoading: false, errorMessage: action.payload, dishList: []};
 
             return newState;
 

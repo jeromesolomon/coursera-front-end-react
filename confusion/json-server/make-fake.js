@@ -28,10 +28,12 @@ _.times(10, ()=> {
     
     const randomName = faker.name.findName();
     const randomEmail = faker.internet.email();
+    const randomImage = faker.image.image();
 
     data.push({
         name: randomName,
-        email: randomEmail
+        email: randomEmail,
+        image: randomImage
     });
 
 });

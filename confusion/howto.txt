@@ -38,10 +38,16 @@ yarn add redux-logger@3.0.6
 npm install json-server -g
 
 // to start the json-server on port 3001 with delay of 2 seconds
-json-server --watch db.json -d 20000 -p 3000
+json-server --watch db.json -d 2000 -p 3000
 
 
 // tools to auto generate a bunch of fake data
 npm install faker
 npm install lodash
 
+// to use curl / fetch any web page
+C:\Windows\System32\curl.exe http://localhost:3001/comments
+
+
+// fetching data from a server
+yarn add cross-fetch

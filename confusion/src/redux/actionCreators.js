@@ -1,7 +1,11 @@
 import * as ActionTypes from './actionTypes';
 
-// shared data
-import { DISHLIST } from '../shared/dishList';
+// server url
+import { serverUrl } from '../shared/serverUrl';
+
+//
+// add comment action
+//
 
 // js object for adding comments action
 export const addComment = (dishId, rating, author, comment) => ({
@@ -19,17 +23,9 @@ export const addComment = (dishId, rating, author, comment) => ({
 
 });
 
-// thunk function
-export const fetchDishList = () => (dispatch) => {
-
-    // dispatch dishlist loading
-    dispatch(dishListLoading(true));
-
-    // 2 second delay, then dispatch addDishList
-    setTimeout(() => {
-        dispatch(addDishList(DISHLIST));
-    }, 2*1000);
-}
+//
+// dishList actions
+//
 
 // load action
 export const dishListLoading = () => ({
@@ -47,3 +43,96 @@ export const addDishList = (dishList) => ({
     type: ActionTypes.ADD_DISHLIST,
     payload: dishList
 });
+
+// thunk function for fetching dishes
+export const fetchDishList = () => (dispatch) => {
+
+    // dispatch dishlist loading
+    dispatch(dishListLoading(true));
+
+    // from server
+    return fetch(serverUrl + 'dishes')
+        // convert response to json
+        .then(response => response.json())
+        // take json and dispatch a add dish action
+        .then(dishList => dispatch(addDishList(dishList)))
+
+};
+
+//
+// commentList actions
+//
+
+// load action
+export const commentListLoading = () => ({
+    type: ActionTypes.COMMENTLIST_LOADING
+});
+
+
+// failed action
+export const commentListFailed = (errorMessage) => ({
+    type: ActionTypes.COMMENTLIST_FAILED,
+    payload: errorMessage
+});
+
+// add action
+export const addCommentList = (commentList) => ({
+    type: ActionTypes.ADD_COMMENTLIST,
+    payload: commentList
+});
+
+// thunk function for fetching commentes
+export const fetchCommentList = () => (dispatch) => {
+
+    // dispatch commentlist loading
+    dispatch(commentListLoading(true));
+
+    // from server
+    return fetch(serverUrl + 'comments')
+        // convert response to json
+        .then(response => response.json())
+        // take json and dispatch a add comment action
+        .then(commentList => dispatch(addCommentList(commentList)))
+
+};
+
+//
+// promoList actions
+//
+
+// load action
+export const promoListLoading = () => ({
+    type: ActionTypes.PROMOLIST_LOADING
+});
+
+
+// failed action
+export const promoListFailed = (errorMessage) => ({
+    type: ActionTypes.PROMOLIST_FAILED,
+    payload: errorMessage
+});
+
+// add action
+export const addPromoList = (promoList) => ({
+    type: ActionTypes.ADD_PROMOLIST,
+    payload: promoList
+});
+
+// thunk function for fetching promoes
+export const fetchPromoList = () => (dispatch) => {
+
+    // dispatch promolist loading
+    dispatch(promoListLoading(true));
+
+    // from server
+    return fetch(serverUrl + 'promos')
+        // convert response to json
+        .then(response => response.json())
+        // take json and dispatch a add promo action
+        .then(promoList => dispatch(addPromoList(promoList)))
+
+};
+
+
+
+

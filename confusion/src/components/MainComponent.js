@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addComment, fetchDishList } from '../redux/actionCreators';
+import { addComment, fetchDishList, fetchCommentList } from '../redux/actionCreators';
 
 // import the predefined actions for redux forms
 import { actions } from 'react-redux-form';
@@ -20,7 +20,7 @@ import DishDetail from './DishDetailComponent';
 const mapStateToProps = (state) => {
     return {
         dishInfo: state.dishInfo,
-        commentList: state.commentList,
+        commentInfo: state.commentInfo,
         promotionList: state.promotionList,
         leaderList: state.leaderList
     }
@@ -34,6 +34,9 @@ const mapDispatchToProps = (dispatch) => {
             },
         fetchDishList: () => {
             dispatch(fetchDishList());
+            },
+        fetchCommentList: () => {
+            dispatch(fetchCommentList());
             },
         resetFeedbackForm: () => {
             dispatch(actions.reset('feedback'));
@@ -50,6 +53,7 @@ class MainComponent extends Component {
 
         // fetch the dish list when component is mounted
         this.props.fetchDishList();
+        this.props.fetchCommentList();
 
     }
 
@@ -87,7 +91,7 @@ class MainComponent extends Component {
 
             let selectedDish = selectedDishList[0];
 
-            let selectedDishCommentList = this.props.commentList.filter(
+            let selectedDishCommentList = this.props.commentInfo.commentList.filter(
                 (comment) => comment.dishId === menuDishId);
 
             console.log("selectedDish = ", selectedDish);
