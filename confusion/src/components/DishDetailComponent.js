@@ -10,6 +10,8 @@ import { Control, LocalForm, Errors } from 'react-redux-form';
 
 import { Loading } from './LoadingComponent';
 
+import { serverUrl } from '../shared/serverUrl';
+
 
 //
 // form validation functions
@@ -51,7 +53,7 @@ function RenderDish(props) {
             <React.Fragment>
                 <Card 
                     className="dishDetailCard">
-                    <CardImg src={dish.image} alt={dish.name} />
+                    <CardImg src={serverUrl + dish.image} alt={dish.name} />
                     <CardBody>
                         <CardTitle>{dish.name}</CardTitle>
                     </CardBody>

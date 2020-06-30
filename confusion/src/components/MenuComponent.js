@@ -3,6 +3,8 @@ import { Card, CardImg, CardImgOverlay, CardTitle } from 'reactstrap';
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
+import { serverUrl } from '../shared/serverUrl';
+
 import { Loading } from './LoadingComponent';
 
 function MenuItem(props) {
@@ -13,7 +15,7 @@ function MenuItem(props) {
 
         <Card className="dishCard">
             <Link to={`/menu/${dish.id}`}>
-                <CardImg src={dish.image} alt={dish.name} />
+                <CardImg src={serverUrl + dish.image} alt={dish.name} />
                 <CardImgOverlay>
                     <CardTitle>{dish.name}</CardTitle>
                 </CardImgOverlay>

@@ -4,6 +4,8 @@ import { Card, CardImg, CardText, CardBody,
 
 import { Loading } from './LoadingComponent';
 
+import { serverUrl } from '../shared/serverUrl';
+
 function RenderCard(props) {
 
     const { item, isLoading, errorMessage } = props;
@@ -32,7 +34,7 @@ function RenderCard(props) {
 
     return(
         <Card>
-            <CardImg src={item.image} alt={item.name} />
+            <CardImg src={serverUrl + item.image} alt={item.name} />
             <CardBody>
             <CardTitle>{item.name}</CardTitle>
             {item.designation ? <CardSubtitle>{item.designation}</CardSubtitle> : null }
