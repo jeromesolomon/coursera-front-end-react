@@ -12,7 +12,7 @@ export const LeaderInfoReducer = (state = initialState, action) => {
 
     switch(action.type) {
 
-        case ActionTypes.ADD_LEADERLIST:
+        case ActionTypes.SET_LEADERLIST:
 
             // create new state with some fields changed
             newState = {...state, isLoading: false, errorMessage: null, leaderList: action.payload};

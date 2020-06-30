@@ -12,7 +12,7 @@ export const PromoInfoReducer = (state = initialState, action) => {
 
     switch(action.type) {
 
-        case ActionTypes.ADD_PROMOLIST:
+        case ActionTypes.SET_PROMOLIST:
 
             // create new state with some fields changed
             newState = {...state, isLoading: false, errorMessage: null, promoList: action.payload};

@@ -12,7 +12,7 @@ export const DishInfoReducer = (state = initialState, action) => {
 
     switch(action.type) {
 
-        case ActionTypes.ADD_DISHLIST:
+        case ActionTypes.SET_DISHLIST:
 
             // create new state with some fields changed
             newState = {...state, isLoading: false, errorMessage: null, dishList: action.payload};

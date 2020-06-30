@@ -40,7 +40,7 @@ export const dishListFailed = (errorMessage) => ({
 
 // add action
 export const addDishList = (dishList) => ({
-    type: ActionTypes.ADD_DISHLIST,
+    type: ActionTypes.SET_DISHLIST,
     payload: dishList
 });
 
@@ -77,7 +77,7 @@ export const commentListFailed = (errorMessage) => ({
 
 // add action
 export const addCommentList = (commentList) => ({
-    type: ActionTypes.ADD_COMMENTLIST,
+    type: ActionTypes.SET_COMMENTLIST,
     payload: commentList
 });
 
@@ -114,7 +114,7 @@ export const promoListFailed = (errorMessage) => ({
 
 // add action
 export const addPromoList = (promoList) => ({
-    type: ActionTypes.ADD_PROMOLIST,
+    type: ActionTypes.SET_PROMOLIST,
     payload: promoList
 });
 
@@ -152,7 +152,7 @@ export const leaderListFailed = (errorMessage) => ({
 
 // add action
 export const addLeaderList = (leaderList) => ({
-    type: ActionTypes.ADD_LEADERLIST,
+    type: ActionTypes.SET_LEADERLIST,
     payload: leaderList
 });
 

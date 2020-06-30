@@ -13,7 +13,7 @@ export const CommentInfoReducer = (state = initialState, action) => {
 
     switch(action.type) {
 
-        case ActionTypes.ADD_COMMENTLIST:
+        case ActionTypes.SET_COMMENTLIST:
 
             // create new state with some fields changed
             newState = {...state, isLoading: false, errorMessage: null, commentList: action.payload}
