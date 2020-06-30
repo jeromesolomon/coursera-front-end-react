@@ -4,8 +4,8 @@ import { createForms} from 'react-redux-form';
 // import redux store elements
 import { DishInfoReducer } from './dishInfoReducer';
 import { CommentInfoReducer } from './commentInfoReducer';
-import { PromotionListReducer } from './promotionListReducer';
-import { LeaderListReducer } from './leaderListReducer';
+import { PromoInfoReducer } from './promoInfoReducer';
+import { LeaderInfoReducer } from './leaderInfoReducer';
 import { InitialFeedbackForm } from './forms';
 
 // add redux dev tools with action tracing turned on
@@ -39,8 +39,8 @@ export const ConfigureStore = () => {
         combineReducers({
             dishInfo: DishInfoReducer,
             commentInfo: CommentInfoReducer,
-            promotionList: PromotionListReducer,
-            leaderList: LeaderListReducer,
+            promoInfo: PromoInfoReducer,
+            leaderInfo: LeaderInfoReducer,
             ...createForms({
                 feedback: InitialFeedbackForm
             })
@@ -48,5 +48,6 @@ export const ConfigureStore = () => {
         allEnhancers);
 
     return store;
+
 
 }

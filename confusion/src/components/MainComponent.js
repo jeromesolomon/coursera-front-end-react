@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addComment, fetchDishList, fetchCommentList } from '../redux/actionCreators';
+import { addComment, fetchDishList, fetchCommentList, fetchPromoList, fetchLeaderList } from '../redux/actionCreators';
 
 // import the predefined actions for redux forms
 import { actions } from 'react-redux-form';
@@ -21,8 +21,8 @@ const mapStateToProps = (state) => {
     return {
         dishInfo: state.dishInfo,
         commentInfo: state.commentInfo,
-        promotionList: state.promotionList,
-        leaderList: state.leaderList
+        promoInfo: state.promoInfo,
+        leaderInfo: state.leaderInfo
     }
 }
 
@@ -38,6 +38,12 @@ const mapDispatchToProps = (dispatch) => {
         fetchCommentList: () => {
             dispatch(fetchCommentList());
             },
+        fetchPromoList: () => {
+            dispatch(fetchPromoList());
+            },
+        fetchLeaderList: () => {
+            dispatch(fetchLeaderList());
+            },
         resetFeedbackForm: () => {
             dispatch(actions.reset('feedback'));
             }
@@ -51,22 +57,25 @@ class MainComponent extends Component {
     // is mounted into view of application
     componentDidMount() {
 
-        // fetch the dish list when component is mounted
+        // fetch the data from server when Main component is mounted
         this.props.fetchDishList();
         this.props.fetchCommentList();
+        this.props.fetchPromoList();
+        this.props.fetchLeaderList();
 
     }
 
     render() {
 
         const HomePage = () => {
+
+            console.log("this.props = ", this.props);
+
             return(
                 <Home
-                dish={this.props.dishInfo.dishList.filter((dish) => dish.featured)[0]}
-                isLoading={this.props.dishInfo.isLoading}
-                errorMessage={this.props.dishInfo.errorMessage}
-                promotion={this.props.promotionList.filter((promo) => promo.featured)[0]}
-                leader={this.props.leaderList.filter((leader) => leader.featured)[0]}
+                dishInfo={this.props.dishInfo}
+                promoInfo={this.props.promoInfo}
+                leaderInfo={this.props.leaderInfo}
                 >
                 </Home>
             );
@@ -117,7 +126,7 @@ class MainComponent extends Component {
 
                     <Route exact path='/aboutus' component={
                         () => <About
-                            leaderList={this.props.leaderList}
+                            leaderList={this.props.leaderInfo.leaderList}
                             >
                             </About>}
                     >

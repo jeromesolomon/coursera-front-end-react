@@ -43,26 +43,45 @@ function RenderCard(props) {
 
 }
 
+/*
+                dish={this.props.dishInfo.dishList.filter((dish) => dish.featured)[0]}
+                isLoading={this.props.dishInfo.isLoading}
+                errorMessage={this.props.dishInfo.errorMessage}
+                promotion={this.props.promotionList.filter((promo) => promo.featured)[0]}
+                leader={this.props.leaderList.filter((leader) => leader.featured)[0]}
+*/
+
 function Home(props) {
+
+    const { dishInfo, promoInfo, leaderInfo } = props;
+
+    // get the featured dish
+    let featuredDish = dishInfo.dishList.filter((dish) => (dish.featured))[0];
+    let featuredPromo = promoInfo.promoList.filter((promo) => (promo.featured))[0];
+    let featuredLeader = leaderInfo.leaderList.filter((leader) => (leader.featured))[0];
 
     return(
         <div className="container">
             <div className="row align-items-start">
                 <div className="col-12 col-md m-1">
                     <RenderCard 
-                        item={props.dish}
-                        isLoading={props.isLoading}
-                        errorMessage={props.errorMessage}
+                        item={featuredDish}
+                        isLoading={dishInfo.isLoading}
+                        errorMessage={dishInfo.errorMessage}
                     />
                 </div>
                 <div className="col-12 col-md m-1">
                     <RenderCard
-                        item={props.promotion}
+                        item={featuredPromo}
+                        isLoading={promoInfo.isLoading}
+                        errorMessage={promoInfo.errorMessage}
                     />
                 </div>
                 <div className="col-12 col-md m-1">
                     <RenderCard
-                        item={props.leader}
+                        item={featuredLeader}
+                        isLoading={leaderInfo.isLoading}
+                        errorMessage={leaderInfo.errorMessage}
                     />
                 </div>
             </div>

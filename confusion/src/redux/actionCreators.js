@@ -7,7 +7,7 @@ import { serverUrl } from '../shared/serverUrl';
 // add comment action
 //
 
-// js object for adding comments action
+// js function for comments action
 export const addComment = (dishId, rating, author, comment) => ({
     
     type: ActionTypes.ADD_COMMENT,
@@ -125,7 +125,7 @@ export const fetchPromoList = () => (dispatch) => {
     dispatch(promoListLoading(true));
 
     // from server
-    return fetch(serverUrl + 'promos')
+    return fetch(serverUrl + 'promotions')
         // convert response to json
         .then(response => response.json())
         // take json and dispatch a add promo action
@@ -134,5 +134,40 @@ export const fetchPromoList = () => (dispatch) => {
 };
 
 
+//
+// leaderList actions
+//
 
+// load action
+export const leaderListLoading = () => ({
+    type: ActionTypes.LEADERLIST_LOADING
+});
+
+
+// failed action
+export const leaderListFailed = (errorMessage) => ({
+    type: ActionTypes.LEADERLIST_FAILED,
+    payload: errorMessage
+});
+
+// add action
+export const addLeaderList = (leaderList) => ({
+    type: ActionTypes.ADD_LEADERLIST,
+    payload: leaderList
+});
+
+// thunk function for fetching leaderes
+export const fetchLeaderList = () => (dispatch) => {
+
+    // dispatch leaderlist loading
+    dispatch(leaderListLoading(true));
+
+    // from server
+    return fetch(serverUrl + 'leaders')
+        // convert response to json
+        .then(response => response.json())
+        // take json and dispatch a add leader action
+        .then(leaderList => dispatch(addLeaderList(leaderList)))
+
+};
 
