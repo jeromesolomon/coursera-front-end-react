@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 
 import { serverUrl } from '../shared/serverUrl';
 
+import { Loading } from './LoadingComponent';
+
 
 function RenderLeader(props) {
 
@@ -37,9 +39,30 @@ function RenderLeader(props) {
 
 function About(props) {
 
-    const { leaderList } = props;
+    const { leaderInfo } = props;
 
+    if (leaderInfo.isLoading) {
+        return(
+            <div className="container">
+                <div className="row">
+                    <Loading></Loading>
+                </div>
+            </div>
 
+        );
+    }
+
+    if (leaderInfo.errorMessage) {
+        return(
+            <div className="container">
+                <div className="row">            
+                    <h4>{leaderInfo.errorMessage}</h4>
+                </div>
+            </div>
+        );
+    }
+
+    let leaderList = leaderInfo.leaderList;
 
     return(
         <div className="container">

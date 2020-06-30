@@ -26,7 +26,7 @@ function RenderCard(props) {
         return(
             <div className="container">
                 <div className="row">            
-                    <h4>{props.errorMessage}</h4>
+                    <h4>{errorMessage}</h4>
                 </div>
             </div>
         );

@@ -44,6 +44,35 @@ export const addDishList = (dishList) => ({
     payload: dishList
 });
 
+//
+// server response is ok
+//
+const serverSuccess = (response) => {
+
+    if (response.ok) {
+        return response;
+    // else the response is a server processing error
+    } else {
+        // generate a new error object
+        let error = new Error('Server Error:' + response.status + ":" + response.statusText);
+        error.response = response;
+        throw error;
+    }
+
+}
+
+//
+// server does not respond, error occured, promise failed
+//
+const serverFail = (error) => {
+
+    // prepend more info to the error message
+    error.message = "Server Error: Unable to contact the server. " + error.message;
+
+    throw error;
+    
+}
+
 // thunk function for fetching dishes
 export const fetchDishList = () => (dispatch) => {
 
@@ -52,10 +81,18 @@ export const fetchDishList = () => (dispatch) => {
 
     // from server
     return fetch(serverUrl + 'dishes')
+
+        // server gives a response as a promise
+        .then(serverSuccess, serverFail)
+
         // convert response to json
         .then(response => response.json())
+
         // take json and dispatch a add dish action
         .then(dishList => dispatch(addDishList(dishList)))
+
+        // catch any of the thrown errors
+        .catch(error => dispatch(dishListFailed(error.message)));
 
 };
 
@@ -89,10 +126,17 @@ export const fetchCommentList = () => (dispatch) => {
 
     // from server
     return fetch(serverUrl + 'comments')
+
+        // server gives a response as a promise
+        .then(serverSuccess, serverFail)
+
         // convert response to json
         .then(response => response.json())
         // take json and dispatch a add comment action
         .then(commentList => dispatch(addCommentList(commentList)))
+
+        // catch any of the thrown errors
+        .catch(error => dispatch(commentListFailed(error.message)));
 
 };
 
@@ -126,10 +170,18 @@ export const fetchPromoList = () => (dispatch) => {
 
     // from server
     return fetch(serverUrl + 'promotions')
+
+        // server gives a response as a promise
+        .then(serverSuccess, serverFail)
+
         // convert response to json
         .then(response => response.json())
+
         // take json and dispatch a add promo action
         .then(promoList => dispatch(addPromoList(promoList)))
+
+        // catch any of the thrown errors
+        .catch(error => dispatch(promoListFailed(error.message)));
 
 };
 
@@ -164,10 +216,18 @@ export const fetchLeaderList = () => (dispatch) => {
 
     // from server
     return fetch(serverUrl + 'leaders')
+
+        // server gives a response as a promise
+        .then(serverSuccess, serverFail)
+
         // convert response to json
         .then(response => response.json())
+
         // take json and dispatch a add leader action
         .then(leaderList => dispatch(addLeaderList(leaderList)))
+
+        // catch any of the thrown errors
+        .catch(error => dispatch(leaderListFailed(error.message)));
 
 };
 
