@@ -46,7 +46,9 @@ npm install faker
 npm install lodash
 
 // to use curl / fetch any web page
+jcurl http://localhost:3001/comments
 C:\Windows\System32\curl.exe http://localhost:3001/comments
+
 
 
 // fetching data from a server

@@ -9,6 +9,7 @@ var randomName = faker.name.findName(); // Rowan Nikolaus
 var randomEmail = faker.internet.email(); // Kassandra.Haley@erich.biz
 var randomImage = faker.image.image(); // random contact card containing many properties
 
+
 console.log("randomName =", randomName);
 console.log("randomEmail =", randomEmail);
 console.log("randomImage =", randomImage);
@@ -26,14 +27,16 @@ let data = [];
 
 _.times(10, ()=> {
     
-    const randomName = faker.name.findName();
-    const randomEmail = faker.internet.email();
-    const randomImage = faker.image.image();
+    let randomName = faker.name.findName();
+    let randomEmail = faker.internet.email();
+    let randomImage = faker.image.image();
+    // let randomFoodImage = faker.image.food();
 
     data.push({
         name: randomName,
         email: randomEmail,
-        image: randomImage
+        image: randomImage,
+        // foodImage: randomFoodImage
     });
 
 });
