@@ -6,6 +6,7 @@ import { Loading } from './LoadingComponent';
 
 import { serverUrl } from '../shared/serverUrl';
 
+// react animations
 import { FadeTransform } from 'react-animation-components';
 
 function RenderCard(props) {

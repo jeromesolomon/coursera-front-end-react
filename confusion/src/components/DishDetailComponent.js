@@ -11,7 +11,9 @@ import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Loading } from './LoadingComponent';
 
 import { serverUrl } from '../shared/serverUrl';
-import { DishInfoReducer } from '../redux/dishInfoReducer';
+
+// react animations
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 
 //
@@ -52,16 +54,23 @@ function RenderDish(props) {
     if (dish != null) {
         return (
             <React.Fragment>
-                <Card 
-                    className="dishDetailCard">
-                    <CardImg src={serverUrl + dish.image} alt={dish.name} />
-                    <CardBody>
-                        <CardTitle>{dish.name}</CardTitle>
-                    </CardBody>
-                    <CardText className="dishDetailCardText">
-                        {dish.description}
-                    </CardText> 
-                </Card>
+                <FadeTransform
+                    in
+                    transformProps={{
+                        exitTransform: 'scale(0.5) translate(-50%)'
+                    }}
+                >
+                    <Card 
+                        className="dishDetailCard">
+                        <CardImg src={serverUrl + dish.image} alt={dish.name} />
+                        <CardBody>
+                            <CardTitle>{dish.name}</CardTitle>
+                        </CardBody>
+                        <CardText className="dishDetailCardText">
+                            {dish.description}
+                        </CardText> 
+                    </Card>
+                </FadeTransform>
             </React.Fragment>
         )
     }
@@ -98,10 +107,12 @@ function RenderCommentList(props) {
                 let d = aDate.toLocaleDateString(undefined, dateOptions)
 
                 return (
-                    <div className="dishComment" key={index}>
-                        <li>{x.comment}</li>
-                        <li>-- {x.author}, {d}</li>
-                    </div>
+                    <Fade in>
+                        <div className="dishComment" key={index}>
+                            <li>{x.comment}</li>
+                            <li>-- {x.author}, {d}</li>
+                        </div>
+                    </Fade>
                 );
             });
 
@@ -114,7 +125,9 @@ function RenderCommentList(props) {
                     </CardBody>
                     <CardText className="dishDetailCardText">
                         <ul className="list-unstyled">
-                            {commentItems}
+                            <Stagger in>
+                                {commentItems}
+                            </Stagger>
                         </ul>
                     </CardText> 
                     <CommentForm
