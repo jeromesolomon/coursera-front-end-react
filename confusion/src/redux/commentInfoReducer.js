@@ -52,7 +52,7 @@ export const CommentInfoReducer = (state = initialState, action) => {
             // copy the existing commentList
             newState.commentList = [...state.commentList];
 
-            // apend the new comment from the action to the list
+            // append the new comment from the action to the list
             newState.commentList.push(action.payload);
 
             // return a new state (commment list)
@@ -66,8 +66,22 @@ export const CommentInfoReducer = (state = initialState, action) => {
 
         case ActionTypes.COMMENT_POST_FAILED:
 
-            // create a new state with some fields changed
-            newState = {...state, errorMessage: action.payload};
+            // create a new state with some fields changed, put error message in comments area fornow
+            newState = {...state, errorMessage: action.payload, commentList: []};
+
+            // put the error message comment from the action into the list
+            // make a fake error message comment
+            const errorComment = {
+                id: 0,
+                dishId: 1,
+                rating: 1,
+                comment: action.payload,
+                author: "None",
+                date: new Date().toISOString()
+              };
+
+            newState.commentList.push(errorComment);
+
 
             return newState;
 

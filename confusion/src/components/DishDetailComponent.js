@@ -11,6 +11,7 @@ import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Loading } from './LoadingComponent';
 
 import { serverUrl } from '../shared/serverUrl';
+import { DishInfoReducer } from '../redux/dishInfoReducer';
 
 
 //
@@ -160,7 +161,6 @@ class DishDetail extends Component {
         // toggle off the modal
         this.toggleModal();
 
-        console.log('Current State is: ', values);
         // alert('Current State is: ' + JSON.stringify(values, null, 2));
 
         // add comment to list by dispatching a postComment action to update

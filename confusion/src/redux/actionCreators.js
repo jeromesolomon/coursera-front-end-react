@@ -68,10 +68,9 @@ export const postComment = (dishId, rating, author, comment) => (dispatch) => {
         rating: rating, 
         comment: comment,
         author: author,
-        date: undefined
+        date: new Date().toISOString()
     }
 
-    newComment.date = new Date().toISOString();
 
     // post to server
     return fetch(serverUrl + 'comments', 
