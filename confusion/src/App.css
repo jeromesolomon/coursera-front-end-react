@@ -7941,6 +7941,34 @@ a.text-dark:hover, a.text-dark:focus {
   }
 }
 
+.page-enter {
+  opacity: 0.01;
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+
+.page-enter-active {
+  opacity: 1;
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
+  -webkit-transition: all 150ms ease-in;
+  transition: all 150ms ease-in;
+}
+
+.page-exit {
+  opacity: 1;
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
+}
+
+.page-exit-active {
+  opacity: 0.01;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+}
+
 #commentFormButton {
   margin: 10px;
 }

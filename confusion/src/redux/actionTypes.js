@@ -1,7 +1,7 @@
 
 // action types for reducers
 
-// comment to server and redux state actions
+// comment sent to json-server and redux state actions
 export const COMMENT_POSTING = 'COMMENT_POSTING';
 export const COMMENT_POST_FAILED = 'COMMENT_POST_FAILED';
 export const ADD_COMMENT = 'ADD_COMMENT';

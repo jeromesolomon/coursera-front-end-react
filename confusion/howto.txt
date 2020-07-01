@@ -50,6 +50,9 @@ jcurl http://localhost:3001/comments
 C:\Windows\System32\curl.exe http://localhost:3001/comments
 
 
-
-// fetching data from a server
+// fetching data from a server (for browsers without native fetch support)
 yarn add cross-fetch
+
+
+// react animation packages
+yarn add react-transition-group
