@@ -6,6 +6,8 @@ import { Loading } from './LoadingComponent';
 
 import { serverUrl } from '../shared/serverUrl';
 
+import { FadeTransform } from 'react-animation-components';
+
 function RenderCard(props) {
 
     const { item, isLoading, errorMessage } = props;
@@ -32,26 +34,27 @@ function RenderCard(props) {
         );
     }
 
+
     return(
-        <Card>
-            <CardImg src={serverUrl + item.image} alt={item.name} />
-            <CardBody>
-            <CardTitle>{item.name}</CardTitle>
-            {item.designation ? <CardSubtitle>{item.designation}</CardSubtitle> : null }
-            <CardText>{item.description}</CardText>
-            </CardBody>
-        </Card>
+        <FadeTransform
+            in
+            transformProps={{
+                exitTransform: 'scale(0.5) translate(-50%)'
+            }}
+        >
+            <Card>
+                <CardImg src={serverUrl + item.image} alt={item.name} />
+                <CardBody>
+                <CardTitle>{item.name}</CardTitle>
+                {item.designation ? <CardSubtitle>{item.designation}</CardSubtitle> : null }
+                <CardText>{item.description}</CardText>
+                </CardBody>
+            </Card>
+        </FadeTransform>
     );
 
 }
 
-/*
-                dish={this.props.dishInfo.dishList.filter((dish) => dish.featured)[0]}
-                isLoading={this.props.dishInfo.isLoading}
-                errorMessage={this.props.dishInfo.errorMessage}
-                promotion={this.props.promotionList.filter((promo) => promo.featured)[0]}
-                leader={this.props.leaderList.filter((leader) => leader.featured)[0]}
-*/
 
 function Home(props) {
 

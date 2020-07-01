@@ -56,3 +56,8 @@ yarn add cross-fetch
 
 // react animation packages
 yarn add react-transition-group
+
+// another react animation package
+yarn add react-animation-components
+ 
+

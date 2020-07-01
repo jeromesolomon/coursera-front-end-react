@@ -1,7 +1,7 @@
 import * as ActionTypes from './actionTypes';
 
 const initialState = {
-    isLoading: false,
+    isLoading: true, // defaults to true, since the first thing to happen is to load data from the server
     errorMessage: null,
     dishList: []
 };
