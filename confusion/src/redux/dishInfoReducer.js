@@ -1,7 +1,7 @@
 import * as ActionTypes from './actionTypes';
 
 const initialState = {
-    isLoading: true,
+    isLoading: false,
     errorMessage: null,
     dishList: []
 };
@@ -22,7 +22,7 @@ export const DishInfoReducer = (state = initialState, action) => {
         case ActionTypes.DISHLIST_LOADING:
 
             // create new state
-            newState = Object.assign({}, initialState);
+            newState = Object.assign({}, initialState, { isLoading: true });
 
             return newState;
 

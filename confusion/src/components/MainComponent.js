@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addComment, fetchDishList, fetchCommentList, fetchPromoList, fetchLeaderList } from '../redux/actionCreators';
+import { postComment, fetchDishList, fetchCommentList, fetchPromoList, fetchLeaderList } from '../redux/actionCreators';
 
 // import the predefined actions for redux forms
 import { actions } from 'react-redux-form';
@@ -29,8 +29,8 @@ const mapStateToProps = (state) => {
 // maps the dispatch actions to react components
 const mapDispatchToProps = (dispatch) => {
     return {
-        addComment: (dishId, rating, author, comment) => {
-            dispatch(addComment(dishId, rating, author, comment));
+        postComment: (dishId, rating, author, comment) => {
+            dispatch(postComment(dishId, rating, author, comment));
             },
         fetchDishList: () => {
             dispatch(fetchDishList());
@@ -109,7 +109,7 @@ class MainComponent extends Component {
             return (
                 <DishDetail dish={selectedDish}
                             dishCommentList={selectedDishCommentList}
-                            addComment={this.props.addComment}
+                            postComment={this.props.postComment}
                 >
                 </DishDetail>
             );

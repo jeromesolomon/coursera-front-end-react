@@ -1,7 +1,7 @@
 import * as ActionTypes from './actionTypes';
 
 const initialState = {
-    isLoading: true,
+    isLoading: false,
     errorMessage: null,
     leaderList: []
 };
@@ -22,7 +22,7 @@ export const LeaderInfoReducer = (state = initialState, action) => {
         case ActionTypes.LEADERLIST_LOADING:
 
             // create new state
-            newState = Object.assign({}, initialState);
+            newState = Object.assign({}, initialState, { isLoading: true });
 
             return newState;
 

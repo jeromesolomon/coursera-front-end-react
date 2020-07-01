@@ -70,7 +70,7 @@ function RenderDish(props) {
 // render the dish comments
 function RenderCommentList(props) {
 
-    const { dishCommentList, toggleModal, addComment, dishId } = props;
+    const { dishCommentList, toggleModal, postComment, dishId } = props;
 
     // date.toLocaleDateString('en-US', options));
     // <pre>{JSON.stringify(commentFormatted)}</pre>
@@ -118,7 +118,7 @@ function RenderCommentList(props) {
                     </CardText> 
                     <CommentForm
                         toggleModal = { toggleModal }
-                        addComment={addComment}
+                        postComment={postComment}
                         dishId={dishId}
                     >
                     </CommentForm>
@@ -163,9 +163,9 @@ class DishDetail extends Component {
         console.log('Current State is: ', values);
         // alert('Current State is: ' + JSON.stringify(values, null, 2));
 
-        // add comment to list by dispatching a addComment action to update
+        // add comment to list by dispatching a postComment action to update
         // the react redux store/state
-        this.props.addComment(this.props.dish.id, values.rating, values.name, values.comment);
+        this.props.postComment(this.props.dish.id, values.rating, values.name, values.comment);
     
     }
 
@@ -234,7 +234,7 @@ class DishDetail extends Component {
                             <RenderCommentList 
                                 dishCommentList={dishCommentList}
                                 toggleModal={ () => { this.toggleModal(); } }
-                                addComment={this.props.addComment}
+                                postComment={this.props.postComment}
                                 dishId={this.props.dish.id}
                             >
 

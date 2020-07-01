@@ -4,47 +4,6 @@ import * as ActionTypes from './actionTypes';
 import { serverUrl } from '../shared/serverUrl';
 
 //
-// add comment action
-//
-
-// js function for comments action
-export const addComment = (dishId, rating, author, comment) => ({
-    
-    type: ActionTypes.ADD_COMMENT,
-    comment: {
-        id: undefined, // the new unique id # is set in the reducer
-        dishId: dishId, 
-        rating: rating, 
-        comment: comment,
-        author: author,
-        date: undefined, // the date is set in the reducer
-        
-    }
-
-});
-
-//
-// dishList actions
-//
-
-// load action
-export const dishListLoading = () => ({
-    type: ActionTypes.DISHLIST_LOADING
-});
-
-// failed action
-export const dishListFailed = (errorMessage) => ({
-    type: ActionTypes.DISHLIST_FAILED,
-    payload: errorMessage
-});
-
-// add action
-export const addDishList = (dishList) => ({
-    type: ActionTypes.SET_DISHLIST,
-    payload: dishList
-});
-
-//
 // server response is ok
 //
 const serverSuccess = (response) => {
@@ -73,11 +32,96 @@ const serverFail = (error) => {
     
 }
 
+
+//
+// comment actions
+//
+
+// load action
+export const commentPosting = () => ({
+    type: ActionTypes.COMMENT_POSTING
+});
+
+// failed action
+export const commentPostFailed = (errorMessage) => ({
+    type: ActionTypes.COMMENT_POST_FAILED,
+    payload: errorMessage
+});
+
+//
+// add comment action
+//
+export const addComment = (comment) => ({
+    type: ActionTypes.ADD_COMMENT,
+    payload: comment
+    
+});
+
+export const postComment = (dishId, rating, author, comment) => (dispatch) => {
+
+    // dispatch dishlist loading
+    dispatch(commentPosting());
+    
+    const newComment = {
+        id: undefined, // the new unique id # will be set by the server during post command
+        dishId: dishId, 
+        rating: rating, 
+        comment: comment,
+        author: author,
+        date: undefined
+    }
+
+    newComment.date = new Date().toISOString();
+
+    // post to server
+    return fetch(serverUrl + 'comments', 
+        {
+            method: 'POST',
+            body: JSON.stringify(newComment),
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'same-origin'
+        })
+
+        // server gives a response as a promise
+        .then(serverSuccess, serverFail)
+
+        // convert response to json
+        .then(response => response.json())
+
+        // take json and dispatch a add dish action
+        .then(response => dispatch(addComment(response)))
+
+        // catch any of the thrown errors
+        .catch(error => dispatch(commentPostFailed(error.message)));
+
+};
+
+//
+// dishList actions
+//
+
+// load action
+export const dishListLoading = () => ({
+    type: ActionTypes.DISHLIST_LOADING
+});
+
+// failed action
+export const dishListFailed = (errorMessage) => ({
+    type: ActionTypes.DISHLIST_FAILED,
+    payload: errorMessage
+});
+
+// add action
+export const addDishList = (dishList) => ({
+    type: ActionTypes.SET_DISHLIST,
+    payload: dishList
+});
+
 // thunk function for fetching dishes
 export const fetchDishList = () => (dispatch) => {
 
     // dispatch dishlist loading
-    dispatch(dishListLoading(true));
+    dispatch(dishListLoading());
 
     // from server
     return fetch(serverUrl + 'dishes')
@@ -122,7 +166,7 @@ export const addCommentList = (commentList) => ({
 export const fetchCommentList = () => (dispatch) => {
 
     // dispatch commentlist loading
-    dispatch(commentListLoading(true));
+    dispatch(commentListLoading());
 
     // from server
     return fetch(serverUrl + 'comments')
@@ -166,7 +210,7 @@ export const addPromoList = (promoList) => ({
 export const fetchPromoList = () => (dispatch) => {
 
     // dispatch promolist loading
-    dispatch(promoListLoading(true));
+    dispatch(promoListLoading());
 
     // from server
     return fetch(serverUrl + 'promotions')
