@@ -2,6 +2,9 @@ import React from 'react';
 import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
+// react animations
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
+
 import { serverUrl } from '../shared/serverUrl';
 
 import { Loading } from './LoadingComponent';
@@ -13,18 +16,20 @@ function RenderLeader(props) {
 
     const leaderItems = leaderList.map((leader, index) => {
         return (
-            <div key={index} className="col-12 mt-5">
-                <Media tag="li">
-                    <Media left middle>
-                        <Media object src={serverUrl + leader.image} alt={leader.name} />
+            <Fade in>
+                <div key={index} className="col-12 mt-5">
+                    <Media tag="li">
+                        <Media left middle>
+                            <Media object src={serverUrl + leader.image} alt={leader.name} />
+                        </Media>
+                        <Media body className="ml-5">
+                        <Media heading>{leader.name}</Media>
+                        <p>{leader.designation}</p>
+                        <p>{leader.description}</p>
+                        </Media>
                     </Media>
-                    <Media body className="ml-5">
-                    <Media heading>{leader.name}</Media>
-                    <p>{leader.designation}</p>
-                    <p>{leader.description}</p>
-                    </Media>
-                </Media>
-            </div>
+                </div>
+            </Fade>
 
         );
     });
@@ -119,8 +124,10 @@ function About(props) {
                     <h2>Corporate Leadership</h2>
                 </div>
                 <div className="col-12">
-                    <RenderLeader leaderList={leaderList}>
-                    </RenderLeader>
+                    <Stagger in>
+                        <RenderLeader leaderList={leaderList}>
+                        </RenderLeader>
+                    </Stagger>
                 </div>
             </div>
         </div>

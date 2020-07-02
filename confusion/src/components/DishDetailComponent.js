@@ -8,12 +8,14 @@ import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { Button, Row, Col } from 'reactstrap';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 
+// react animations
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
+
 import { Loading } from './LoadingComponent';
 
 import { serverUrl } from '../shared/serverUrl';
 
-// react animations
-import { FadeTransform, Fade, Stagger } from 'react-animation-components';
+
 
 
 //

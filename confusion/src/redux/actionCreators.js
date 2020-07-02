@@ -72,7 +72,7 @@ export const postComment = (dishId, rating, author, comment) => (dispatch) => {
     }
 
 
-    // post to server
+    // post comment to server
     return fetch(serverUrl + 'comments', 
         {
             method: 'POST',
@@ -271,6 +271,63 @@ export const fetchLeaderList = () => (dispatch) => {
 
         // catch any of the thrown errors
         .catch(error => dispatch(leaderListFailed(error.message)));
+
+};
+
+//
+// feedback actiosn to send feedback to the server
+//
+
+// load action
+export const feedbackPosting = () => ({
+    type: ActionTypes.FEEDBACK_POSTING
+});
+
+// failed action
+export const feedbackPostFailed = (errorMessage) => ({
+    type: ActionTypes.FEEDBACK_POST_FAILED,
+    payload: errorMessage
+});
+
+
+export const postFeedback = (formValues) => (dispatch) => {
+
+    // dispatch dishlist loading
+    dispatch(feedbackPosting());
+    
+    const newFeedback = {
+        id: undefined, // the new unique id # will be set by the server during post command
+        firstname: formValues.firstname,
+        lastname: formValues.lastname,
+        telnum: formValues.telnum,
+        email: formValues.email,
+        agree: formValues.agree,
+        contactType: formValues.contactType,
+        message: formValues.message,
+        date: new Date().toISOString()
+    }
+
+
+    // post feedback to server
+    return fetch(serverUrl + 'feedback', 
+        {
+            method: 'POST',
+            body: JSON.stringify(newFeedback),
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'same-origin'
+        })
+
+        // server gives a response as a promise
+        .then(serverSuccess, serverFail)
+
+        // convert response to json
+        .then(response => response.json())
+
+        // take json and dispatch a add dish action
+        .then(response => alert(JSON.stringify(response, null, 2)))
+
+        // catch any of the thrown errors
+        .catch(error => dispatch(feedbackPostFailed(error.message)));
 
 };
 

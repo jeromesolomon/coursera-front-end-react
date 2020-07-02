@@ -6,6 +6,11 @@ export const COMMENT_POSTING = 'COMMENT_POSTING';
 export const COMMENT_POST_FAILED = 'COMMENT_POST_FAILED';
 export const ADD_COMMENT = 'ADD_COMMENT';
 
+// feedback sent to json-server and redux state actions
+export const FEEDBACK_POSTING = 'FEEDBACK_POSTING';
+export const FEEDBACK_POST_FAILED = 'FEEDBACK_POST_FAILED';
+export const ADD_FEEDBACK = 'ADD_FEEDBACK';
+
 // dish list from server actions
 export const DISHLIST_LOADING = 'DISHLIST_LOADING';
 export const DISHLIST_FAILED = 'DISHLIST_FAILED';

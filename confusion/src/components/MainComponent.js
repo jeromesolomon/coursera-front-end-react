@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { postComment, fetchDishList, fetchCommentList, fetchPromoList, fetchLeaderList } from '../redux/actionCreators';
+import { postComment, postFeedback, fetchDishList, fetchCommentList, fetchPromoList, fetchLeaderList } from '../redux/actionCreators';
 
 // import the predefined actions for redux forms
 import { actions } from 'react-redux-form';
@@ -34,6 +34,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         postComment: (dishId, rating, author, comment) => {
             dispatch(postComment(dishId, rating, author, comment));
+            },
+        postFeedback: (dishId, rating, author, comment) => {
+            dispatch(postFeedback(dishId, rating, author, comment));
             },
         fetchDishList: () => {
             dispatch(fetchDishList());
@@ -151,6 +154,7 @@ class MainComponent extends Component {
                             <Route exact path='/contactus' component={
                                 () => <Contact
                                         resetFeedbackForm={this.props.resetFeedbackForm}
+                                        postFeedback={this.props.postFeedback}
                                     >
                                 </Contact>}
                             >
