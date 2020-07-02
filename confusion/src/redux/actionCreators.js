@@ -279,8 +279,15 @@ export const fetchLeaderList = () => (dispatch) => {
 //
 
 // load action
-export const feedbackPosting = () => ({
-    type: ActionTypes.FEEDBACK_POSTING
+export const feedbackPostSuccess = (response) => ({
+    type: ActionTypes.FEEDBACK_POST_SUCCESS,
+    payload: response
+});
+
+
+// load action
+export const feedbackPostAttempt = () => ({
+    type: ActionTypes.FEEDBACK_POST_ATTEMPT
 });
 
 // failed action
@@ -293,7 +300,7 @@ export const feedbackPostFailed = (errorMessage) => ({
 export const postFeedback = (formValues) => (dispatch) => {
 
     // dispatch dishlist loading
-    dispatch(feedbackPosting());
+    dispatch(feedbackPostAttempt());
     
     const newFeedback = {
         id: undefined, // the new unique id # will be set by the server during post command
@@ -324,7 +331,10 @@ export const postFeedback = (formValues) => (dispatch) => {
         .then(response => response.json())
 
         // take json and dispatch a add dish action
-        .then(response => alert(JSON.stringify(response, null, 2)))
+        .then(response => { 
+            alert(JSON.stringify(response, null, 2));
+            dispatch(feedbackPostSuccess(response));
+         } )
 
         // catch any of the thrown errors
         .catch(error => dispatch(feedbackPostFailed(error.message)));

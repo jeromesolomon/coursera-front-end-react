@@ -356,6 +356,28 @@
       "message": "cccccccccccccccccccccccccccccccccccccccc",
       "date": "2020-07-02T00:45:58.615Z",
       "id": 4
+    },
+    {
+      "firstname": "Gabriel",
+      "lastname": "Solomon",
+      "telnum": "231232",
+      "email": "gjeromesolomon@gmail.com",
+      "agree": true,
+      "contactType": "Email",
+      "message": "ggggggggggggggggggggggggggggggggggggggggg",
+      "date": "2020-07-02T00:52:00.528Z",
+      "id": 5
+    },
+    {
+      "firstname": "Gabriel",
+      "lastname": "Solomon",
+      "telnum": "231232",
+      "email": "gjeromesolomon@gmail.com",
+      "agree": true,
+      "contactType": "Email",
+      "message": "fffffffffffffffffffffffffffffffffgggggggggggggggggggggggg",
+      "date": "2020-07-02T00:57:43.977Z",
+      "id": 6
     }
   ]
 }

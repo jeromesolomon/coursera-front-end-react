@@ -7,9 +7,9 @@ export const COMMENT_POST_FAILED = 'COMMENT_POST_FAILED';
 export const ADD_COMMENT = 'ADD_COMMENT';
 
 // feedback sent to json-server and redux state actions
-export const FEEDBACK_POSTING = 'FEEDBACK_POSTING';
+export const FEEDBACK_POST_ATTEMPT = 'FEEDBACK_POST_ATTEMPT';
 export const FEEDBACK_POST_FAILED = 'FEEDBACK_POST_FAILED';
-export const ADD_FEEDBACK = 'ADD_FEEDBACK';
+export const FEEDBACK_POST_SUCCESS = 'FEEDBACK_POST_SUCCESS';
 
 // dish list from server actions
 export const DISHLIST_LOADING = 'DISHLIST_LOADING';
