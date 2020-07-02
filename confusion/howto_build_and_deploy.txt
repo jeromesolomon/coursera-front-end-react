@@ -1,0 +1,11 @@
+//
+// how to build and deploy a react app
+//
+
+1. yarn build (or npm run build)
+2. copy build folder that was created to json-server (or website)
+
+
+
+
+

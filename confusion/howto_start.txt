@@ -1,0 +1,9 @@
+//
+// how to start
+//
+
+1. yarn start
+2. go to browser http://localhost:3000/
+
+
+
