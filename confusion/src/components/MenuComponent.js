@@ -43,23 +43,6 @@ class Menu extends Component {
 
     render() {
 
-        // construct a list of card items
-        const menu = this.props.dishInfo.dishList.map(
-            (dish, index) => {
-
-                return (
-                    // col-12 col-md-6 means:
-                    // on mobile: extra small to small one column for all 12 columns
-                    // on laptop/tablet for medium to extra largre screens, each card occupies 5 columns
-                    <div key={index} className="col-12 col-md-6">
-                        <MenuItem 
-                            dish={dish}
-                            >
-                        </MenuItem>
-                    </div>
-                );
-            });
-
         if (this.props.dishInfo.isLoading) {
             return(
                 <div className="container">
@@ -80,6 +63,24 @@ class Menu extends Component {
                 </div>
             );
         }
+
+        // construct a list of card items
+        // col-12 col-md-6 means:
+        // on mobile: extra small to small one column for all 12 columns
+        // on laptop/tablet for medium to extra largre screens, each card occupies 5 columns
+        
+        const menu = this.props.dishInfo.dishList.map(
+            (dish, index) => {
+
+                return (
+                    <div key={index} className="col-12 col-md-6">
+                        <MenuItem 
+                            dish={dish}
+                            >
+                        </MenuItem>
+                    </div>
+                );
+            });
         
 
         // use list of items in each row of container/grid
