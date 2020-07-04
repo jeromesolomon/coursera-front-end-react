@@ -122,8 +122,19 @@ export const fetchDishList = () => (dispatch) => {
     // dispatch dishlist loading
     dispatch(dishListLoading());
 
+    console.log("ERROR fetch() =", serverUrl + 'dishes');
+
     // from server
-    return fetch(serverUrl + 'dishes')
+    let fetchConfig = {
+        method: 'GET', // *GET, POST, PUT, DELETE, etc.
+        mode: 'cors', // no-cors, *cors, same-origin)
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+            }
+    };
+
+    return fetch(serverUrl + 'dishes', fetchConfig)
 
         // server gives a response as a promise
         .then(serverSuccess, serverFail)
@@ -135,7 +146,7 @@ export const fetchDishList = () => (dispatch) => {
         .then(dishList => dispatch(addDishList(dishList)))
 
         // catch any of the thrown errors
-        .catch(error => dispatch(dishListFailed(error.message)));
+        .catch(error => {console.log("ERROR: error=", error); dispatch(dishListFailed(error.message)); } );
 
 };
 

@@ -1,9 +1,15 @@
 //
-// how to start
+// how to start locally w/ json server
 //
 
+0. adjust server path in serverUrl.js as needed, export const useHeroku = false;
 1. yarn start
 2. go to browser http://localhost:3000/
 
-
+//
+// how to start w/ heruko server, export const useHeroku = true;
+//
+0. adjust server path in serverUrl.js as needed
+1. yarn start-client
+2. go to browser http://localhost:3000/
 
