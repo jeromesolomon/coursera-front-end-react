@@ -35,10 +35,12 @@
     "redux-thunk": "2.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "react-start": "react-scripts start",
+    "server": "cd ./json-server && json-server --watch db.json -d 2000 -p 3001",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start": "npm-run-all --parallel react-start server"
   },
   "eslintConfig": {
     "extends": "react-app"
