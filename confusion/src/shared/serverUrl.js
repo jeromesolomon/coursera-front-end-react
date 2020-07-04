@@ -4,18 +4,18 @@
 export const useHeroku = true;
 
 //heroku server
-let  serverUrlHeruko = 'https://gs-reactaurant.herokuapp.com/';
+let serverUrlHeruko = 'https://gs-reactaurant.herokuapp.com/';
 
 // local json-server
 let serverUrlJsonServer = 'http://localhost:3001/';
 
-
+let theUrl;
 if (useHeroku) {
-    serverUrl = serverUrlHeruko;
+    theUrl = serverUrlHeruko;
 } else {
-    serverUrl = serverUrlJsonServer;
+    theUrl = serverUrlJsonServer;
 }
 
-export var serverUrl;
+export const serverUrl = theUrl;
 
 

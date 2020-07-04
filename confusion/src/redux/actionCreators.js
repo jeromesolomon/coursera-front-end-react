@@ -18,7 +18,7 @@ const serverSuccess = (response) => {
         throw error;
     }
 
-}
+};
 
 //
 // server does not respond, error occured, promise failed
@@ -30,7 +30,7 @@ const serverFail = (error) => {
 
     throw error;
     
-}
+};
 
 
 //
@@ -69,7 +69,7 @@ export const postComment = (dishId, rating, author, comment) => (dispatch) => {
         comment: comment,
         author: author,
         date: new Date().toISOString()
-    }
+    };
 
 
     // post comment to server
@@ -122,19 +122,8 @@ export const fetchDishList = () => (dispatch) => {
     // dispatch dishlist loading
     dispatch(dishListLoading());
 
-    console.log("ERROR fetch() =", serverUrl + 'dishes');
-
     // from server
-    let fetchConfig = {
-        method: 'GET', // *GET, POST, PUT, DELETE, etc.
-        mode: 'cors', // no-cors, *cors, same-origin)
-        headers: {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*'
-            }
-    };
-
-    return fetch(serverUrl + 'dishes', fetchConfig)
+    return fetch(serverUrl + 'dishes')
 
         // server gives a response as a promise
         .then(serverSuccess, serverFail)
@@ -146,7 +135,7 @@ export const fetchDishList = () => (dispatch) => {
         .then(dishList => dispatch(addDishList(dishList)))
 
         // catch any of the thrown errors
-        .catch(error => {console.log("ERROR: error=", error); dispatch(dishListFailed(error.message)); } );
+        .catch(error => dispatch(dishListFailed(error.message)));
 
 };
 
@@ -323,7 +312,7 @@ export const postFeedback = (formValues) => (dispatch) => {
         contactType: formValues.contactType,
         message: formValues.message,
         date: new Date().toISOString()
-    }
+    };
 
 
     // post feedback to server

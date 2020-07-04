@@ -4,7 +4,7 @@ import { Card, CardImg, CardText, CardBody,
 
 import { Loading } from './LoadingComponent';
 
-import { serverUrl } from '../shared/serverUrl';
+import { serverUrl, useHeroku } from '../shared/serverUrl';
 
 // react animations
 import { FadeTransform } from 'react-animation-components';
@@ -34,7 +34,6 @@ function RenderCard(props) {
             </div>
         );
     }
-
 
     return(
         <FadeTransform
