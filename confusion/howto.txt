@@ -59,5 +59,66 @@ yarn add react-transition-group
 
 // another react animation package
 yarn add react-animation-components
-yarn add prop-types@
+yarn add prop-types
 
+
+
+// build a production version of the app
+yarn build
+
+// add firebase
+yarn add firebase
+yarn add firebase-tools
+
+//
+// firebase deployment
+//
+
+// login and init firebase
+firebase login
+firebase init
+
+// set firebase storage.rules to version 2
+rules_version = '2';
+
+// set package.json to react build directory
+{
+  "storage": {
+    "rules": "storage.rules"
+  },
+  "hosting": {
+    "public": "build/.",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
+
+//add to App.js
+firebase.initializeApp(firebaseConfig from firebase console);
+
+
+// deploy to firebase
+firebase deploy
+
+// site is
+https://reactaurant-361ee.web.app/
+
+
+3. firebase -init --debug (use "dist/miles-challenge" as the project directory setting, where thee index.html is located)
+4. firebase deploy
+5. firebase open hosting:site
+
+to test locally:
+firebase serve
+
+
+hosted at:
+Project Console: https://console.firebase.google.com/project/miles-challenge-26b35/overview
+Hosting URL: https://miles-challenge-26b35.web.app
+
+
+directions:
+https://youtu.be/aICeVhu2mAE
