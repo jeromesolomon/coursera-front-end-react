@@ -7,8 +7,16 @@ yarn add firebase
 yarn add firebase-tools
 
 // login and init firebase
+
+firebase projects:list
+
 firebase login
 firebase init
+
+firebase deploy
+//
+// for firebase cloud db setup
+//
 
 // set firebase storage.rules to version 2
 rules_version = '2';
