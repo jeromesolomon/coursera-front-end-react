@@ -35,7 +35,7 @@ function RenderCard(props) {
         );
     }
 
-    console.log("IMAGE PATH =", 'assets/' + item.image);
+    // console.log("IMAGE PATH =", 'assets/' + item.image);
 
     return(
         <FadeTransform
