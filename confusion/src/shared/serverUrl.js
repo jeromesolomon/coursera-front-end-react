@@ -1,7 +1,7 @@
 //
 // path to server
 //
-export const useHeroku = true;
+export const useHeroku = false;
 
 //heroku server
 let serverUrlHeruko = 'https://gs-reactaurant.herokuapp.com/';

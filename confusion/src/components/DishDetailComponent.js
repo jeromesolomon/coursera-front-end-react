@@ -64,7 +64,7 @@ function RenderDish(props) {
                 >
                     <Card 
                         className="dishDetailCard">
-                        <CardImg src={serverUrl + dish.image} alt={dish.name} />
+                        <CardImg src={'/assets/' + dish.image} alt={dish.name} />
                         <CardBody>
                             <CardTitle>{dish.name}</CardTitle>
                         </CardBody>

@@ -35,6 +35,8 @@ function RenderCard(props) {
         );
     }
 
+    console.log("IMAGE PATH =", 'assets/' + item.image);
+
     return(
         <FadeTransform
             in
@@ -43,7 +45,7 @@ function RenderCard(props) {
             }}
         >
             <Card>
-                <CardImg src={serverUrl + item.image} alt={item.name} />
+                <CardImg src={'assets/' + item.image} alt={item.name} />
                 <CardBody>
                 <CardTitle>{item.name}</CardTitle>
                 {item.designation ? <CardSubtitle>{item.designation}</CardSubtitle> : null }

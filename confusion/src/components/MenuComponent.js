@@ -15,7 +15,7 @@ function MenuItem(props) {
 
         <Card className="dishCard">
             <Link to={`/menu/${dish.id}`}>
-                <CardImg src={serverUrl + dish.image} alt={dish.name} />
+                <CardImg src={'assets/'+ dish.image} alt={dish.name} />
                 <CardImgOverlay>
                     <CardTitle>{dish.name}</CardTitle>
                 </CardImgOverlay>
