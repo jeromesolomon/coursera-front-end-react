@@ -104,6 +104,12 @@ $text-padding: 15px;
     padding: $text-padding;
 }
 
+.leaderImage {
+    width: 100px;
+    border: 1px solid $secondary;
+    border-radius: 8px;
+}
+
 .row-header{
     margin:0px auto;
     padding:0px auto;

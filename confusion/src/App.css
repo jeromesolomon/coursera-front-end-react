@@ -9562,6 +9562,12 @@ a.text-dark:hover, a.text-dark:focus {
   padding: 15px;
 }
 
+.leaderImage {
+  width: 100px;
+  border: 1px solid #F67280;
+  border-radius: 8px;
+}
+
 .row-header {
   margin: 0px auto;
   padding: 0px auto;

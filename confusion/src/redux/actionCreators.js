@@ -77,8 +77,7 @@ export const postComment = (dishId, rating, author, comment) => (dispatch) => {
         {
             method: 'POST',
             body: JSON.stringify(newComment),
-            headers: { 'Content-Type': 'application/json' },
-            credentials: 'same-origin'
+            headers: { 'Content-Type': 'application/json' }
         })
 
         // server gives a response as a promise
