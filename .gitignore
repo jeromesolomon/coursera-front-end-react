@@ -10,3 +10,5 @@ npm-debug.log
 # distribution folder for coursera course
 dist
 
+# firebase files
+.firebase/
