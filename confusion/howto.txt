@@ -70,34 +70,25 @@ yarn build
 yarn add firebase
 yarn add firebase-tools
 
-//
-// firebase deployment
-//
-
-// login and init firebase
-firebase login
+//firebase initialize
 firebase init
 
-// set firebase storage.rules to version 2
-rules_version = '2';
 
-// set package.json to react build directory
+// set package.json for react, and point to yarn build directory
 {
-  "storage": {
-    "rules": "storage.rules"
-  },
   "hosting": {
-    "public": "build/.",
+    "public": "build",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ]
+    ],
+    "rewrites": [ {
+      "source": "**",
+      "destination": "/index.html"
+    } ]
   }
 }
-
-//add to App.js
-firebase.initializeApp(firebaseConfig from firebase console);
 
 
 // deploy to firebase
