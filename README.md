@@ -1,4 +1,4 @@
 # coursera-front-end-react
  
-Front end UI created with React, Redux, JavaScript, using a JSON-server for the 
-backend that queries using fetch API with robust error checking.
+Front end UI restaurant created with React, Redux, JavaScript, using a JSON-server for local testing and a MongoDB NoSQL DB for the 
+hosted site that queries using fetch RESTful API with robust error checking.
