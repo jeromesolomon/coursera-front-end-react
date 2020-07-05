@@ -86,7 +86,7 @@ class Header extends Component {
                         <div className="row row-header">
                             <div className="col-12 col-sm-6">
                                 <h1>Reactaurant</h1>
-                                <p>We take inspiration from the World's best cuisines, and create a unique fusion experience. Our lipsmacking creations will tickle your culinary senses!</p>
+                                <p>We take inspiration from the most reactive ingredients and how they can create amazing cuisines.</p>
                             </div>
                         </div>
                     </div>

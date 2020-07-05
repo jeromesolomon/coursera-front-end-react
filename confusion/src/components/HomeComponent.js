@@ -45,7 +45,7 @@ function RenderCard(props) {
             }}
         >
             <Card>
-                <CardImg src={'assets/' + item.image} alt={item.name} />
+                <CardImg className="homeImage" src={'assets/' + item.image} alt={item.name} />
                 <CardBody>
                 <CardTitle>{item.name}</CardTitle>
                 {item.designation ? <CardSubtitle>{item.designation}</CardSubtitle> : null }
@@ -71,13 +71,15 @@ function Home(props) {
         <div className="container">
             <div className="row align-items-start">
                 <div className="col-12 col-md m-1">
-                    <RenderCard 
+                    <h3>Featured Dish</h3>
+                    <RenderCard
                         item={featuredDish}
                         isLoading={dishInfo.isLoading}
                         errorMessage={dishInfo.errorMessage}
                     />
                 </div>
                 <div className="col-12 col-md m-1">
+                    <h3>Special Dish</h3>
                     <RenderCard
                         item={featuredPromo}
                         isLoading={promoInfo.isLoading}
@@ -85,6 +87,7 @@ function Home(props) {
                     />
                 </div>
                 <div className="col-12 col-md m-1">
+                    <h3>Featured Team Member</h3>
                     <RenderCard
                         item={featuredLeader}
                         isLoading={leaderInfo.isLoading}

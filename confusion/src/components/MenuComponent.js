@@ -12,16 +12,15 @@ function MenuItem(props) {
     const { dish }  = props;
 
     return(
-
-        <Card className="dishCard">
-            <Link to={`/menu/${dish.id}`}>
-                <CardImg src={'assets/'+ dish.image} alt={dish.name} />
-                <CardImgOverlay>
+        <React.Fragment>
+            <Card className="dishCard">
+                <Link to={`/menu/${dish.id}`}>
+                    <CardImg className="menuDishImage" src={'assets/'+ dish.image} alt={dish.name} />
                     <CardTitle>{dish.name}</CardTitle>
-                </CardImgOverlay>
-            </Link>
-        </Card>
-
+                    <CardImgOverlay></CardImgOverlay>
+                </Link>
+            </Card>
+        </React.Fragment>
     );
 
 }
@@ -73,7 +72,7 @@ class Menu extends Component {
             (dish, index) => {
 
                 return (
-                    <div key={index} className="col-12 col-md-6">
+                    <div key={index} className="col-12 col-md-4">
                         <MenuItem 
                             dish={dish}
                             >
