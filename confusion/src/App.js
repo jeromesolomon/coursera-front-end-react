@@ -21,6 +21,8 @@ class App extends Component {
 
   render() {
 
+    document.title = 'Reactaurant'
+
     return (
       <Provider store={store}>
         <BrowserRouter>
