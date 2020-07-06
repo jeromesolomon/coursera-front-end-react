@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom';
 // react animations
 import { Fade, Stagger } from 'react-animation-components';
 
-import { serverUrl } from '../shared/serverUrl';
-
 import { Loading } from './LoadingComponent';
 
 

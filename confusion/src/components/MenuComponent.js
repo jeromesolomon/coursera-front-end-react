@@ -3,8 +3,6 @@ import { Card, CardImg, CardImgOverlay, CardTitle } from 'reactstrap';
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
-import { serverUrl } from '../shared/serverUrl';
-
 import { Loading } from './LoadingComponent';
 
 function MenuItem(props) {

@@ -13,10 +13,6 @@ import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 import { Loading } from './LoadingComponent';
 
-import { serverUrl } from '../shared/serverUrl';
-
-
-
 
 //
 // form validation functions
