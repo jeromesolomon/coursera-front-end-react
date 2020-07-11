@@ -88,6 +88,10 @@ $text-padding: 15px;
     padding: 10px;
 }
 
+.dishDetailImage {
+    width: 300px;
+}
+
 .dishCommentCard {
     border: 1px solid $secondary;
     // background-color: $light-secondary;
@@ -108,6 +112,19 @@ $text-padding: 15px;
     width: 100px;
     border: 1px solid $secondary;
     border-radius: 8px;
+}
+
+.leaderDetailImage {
+    width: 250px;
+    border: 1px solid $secondary;
+    border-radius: 8px;
+    margin: 20px;
+}
+
+.leaderDetailCard {
+    border: 1px solid $primary;
+    // background-color: $light-secondary;
+    margin: $card-margin;
 }
 
 .menuDishImage {

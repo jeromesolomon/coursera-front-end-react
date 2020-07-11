@@ -9549,6 +9549,10 @@ a.text-dark:hover, a.text-dark:focus {
   padding: 10px;
 }
 
+.dishDetailImage {
+  width: 300px;
+}
+
 .dishCommentCard {
   border: 1px solid #F67280;
   margin: 10px;
@@ -9566,6 +9570,18 @@ a.text-dark:hover, a.text-dark:focus {
   width: 100px;
   border: 1px solid #F67280;
   border-radius: 8px;
+}
+
+.leaderDetailImage {
+  width: 250px;
+  border: 1px solid #F67280;
+  border-radius: 8px;
+  margin: 20px;
+}
+
+.leaderDetailCard {
+  border: 1px solid #083358;
+  margin: 10px;
 }
 
 .menuDishImage {

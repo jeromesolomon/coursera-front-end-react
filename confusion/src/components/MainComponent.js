@@ -17,6 +17,7 @@ import Menu from './MenuComponent';
 import Contact from './ContactComponent';
 import About from './AboutComponent';
 import DishDetail from './DishDetailComponent';
+import LeaderDetail from './LeaderDetailComponent';
 
 // maps a redux store state (in reducer.js) into props that will be made
 // available for react components by the provider component
@@ -121,6 +122,35 @@ class MainComponent extends Component {
             );
         }
 
+        const LeaderWithId = (props) => {
+
+            const { match } = props;
+
+            let menuLeaderId = parseInt(match.params.leaderId);
+
+            console.log("menuLeaderId = ", menuLeaderId);
+
+            let selectedLeaderList = this.props.leaderInfo.leaderList.filter((leader) => leader.id === menuLeaderId);
+
+            // if the dish item does not exist, redirect back to the menu
+            if (selectedLeaderList.length === 0) {
+                // return(<div>Dish id {menuDishId.id} not found.</div>);
+                return (<Redirect to="/menu" />);
+            }
+
+            let selectedLeader = selectedLeaderList[0];
+
+
+            console.log("selectedLeader = ", selectedLeader); 
+
+            return (
+                <LeaderDetail
+                leader={selectedLeader}
+                >
+                </LeaderDetail>
+            );
+        }
+
         return (
         <div>
             <Header></Header>
@@ -138,6 +168,8 @@ class MainComponent extends Component {
                                     >
                                     </About>}
                             >
+                            </Route>
+                            <Route path='/aboutus/:leaderId' component={LeaderWithId}>
                             </Route>
 
                             <Route exact path='/menu' component={

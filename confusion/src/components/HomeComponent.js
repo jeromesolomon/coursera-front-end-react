@@ -33,6 +33,15 @@ function RenderCard(props) {
         );
     }
 
+    let route = undefined;
+    if (isDish) {
+            route = "/menu/" + item.id;
+    }
+
+    if (isLeader) {
+        route = "/aboutus/" + item.id;
+    }
+
     // console.log("IMAGE PATH =", 'assets/' + item.image);
 
     console.log("item = ", item);
@@ -46,7 +55,7 @@ function RenderCard(props) {
             }}
         >
             <Card>
-                <Link to={`/menu/${item.id}`}>
+                <Link to={`${route}`}>
                     <CardImg className="homeImage" src={'assets/' + item.image} alt={item.name} />
                     <CardBody>
                     <CardTitle>{item.name}</CardTitle>

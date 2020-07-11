@@ -60,11 +60,15 @@ function RenderDish(props) {
                 >
                     <Card 
                         className="dishDetailCard">
-                        <CardImg src={'/assets/' + dish.image} alt={dish.name} />
+                        <CardImg className="dishDetailImage" src={'/assets/' + dish.image} alt={dish.name} />
                         <CardBody>
-                            <CardTitle>{dish.name}</CardTitle>
+                            <CardTitle>
+                                {dish.name}
+                                <p>${dish.price}</p>
+                            </CardTitle>
                         </CardBody>
                         <CardText className="dishDetailCardText">
+                            
                             {dish.description}
                         </CardText> 
                     </Card>
