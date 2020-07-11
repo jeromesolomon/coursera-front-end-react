@@ -75,7 +75,7 @@ class MainComponent extends Component {
 
         const HomePage = () => {
 
-            console.log("this.props = ", this.props);
+            // console.log("this.props = ", this.props);
 
             return(
                 <Home

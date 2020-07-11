@@ -1,6 +1,6 @@
 import React from 'react';
-import { Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle} from 'reactstrap';
+import { Card, CardImg, CardBody, CardTitle, CardSubtitle} from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 import { Loading } from './LoadingComponent';
 
@@ -9,7 +9,7 @@ import { FadeTransform } from 'react-animation-components';
 
 function RenderCard(props) {
 
-    const { item, isLoading, errorMessage } = props;
+    const { item, isLoading, errorMessage, isDish, isLeader } = props;
 
     // check if dishes are loading
     if (isLoading) {
@@ -35,6 +35,9 @@ function RenderCard(props) {
 
     // console.log("IMAGE PATH =", 'assets/' + item.image);
 
+    console.log("item = ", item);
+    console.log("item.id = ", item.id);
+
     return(
         <FadeTransform
             in
@@ -43,12 +46,13 @@ function RenderCard(props) {
             }}
         >
             <Card>
-                <CardImg className="homeImage" src={'assets/' + item.image} alt={item.name} />
-                <CardBody>
-                <CardTitle>{item.name}</CardTitle>
-                {item.designation ? <CardSubtitle>{item.designation}</CardSubtitle> : null }
-                <CardText>{item.description}</CardText>
-                </CardBody>
+                <Link to={`/menu/${item.id}`}>
+                    <CardImg className="homeImage" src={'assets/' + item.image} alt={item.name} />
+                    <CardBody>
+                    <CardTitle>{item.name}</CardTitle>
+                    {item.designation ? <CardSubtitle>{item.designation}</CardSubtitle> : null }
+                    </CardBody>
+                </Link>
             </Card>
         </FadeTransform>
     );
@@ -74,6 +78,8 @@ function Home(props) {
                         item={featuredDish}
                         isLoading={dishInfo.isLoading}
                         errorMessage={dishInfo.errorMessage}
+                        isDish={true}
+                        isLeader={false}
                     />
                 </div>
                 <div className="col-12 col-md m-1">
@@ -82,6 +88,8 @@ function Home(props) {
                         item={featuredPromo}
                         isLoading={promoInfo.isLoading}
                         errorMessage={promoInfo.errorMessage}
+                        isDish={true}
+                        isLeader={false}
                     />
                 </div>
                 <div className="col-12 col-md m-1">
@@ -90,6 +98,8 @@ function Home(props) {
                         item={featuredLeader}
                         isLoading={leaderInfo.isLoading}
                         errorMessage={leaderInfo.errorMessage}
+                        isDish={false}
+                        isLeader={true}
                     />
                 </div>
             </div>
