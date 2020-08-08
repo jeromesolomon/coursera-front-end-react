@@ -17,12 +17,12 @@ import { Loading } from './LoadingComponent';
 //
 // form validation functions
 //
-const required = (val) => { return (val && (val.length>0)); }
+const required = (val) => { return (val && (val.length>0)); };
 // function of functions
-const maxLength = (len) => (val) => { return ( !(val) || (val.length <= len) ); }
-const minLength = (len) => (val) => { return ( val && (val.length >= len) ); }
+const maxLength = (len) => (val) => { return ( !(val) || (val.length <= len) ); };
+const minLength = (len) => (val) => { return ( val && (val.length >= len) ); };
 
-const requiredSelect = (val) => {  return !isNaN(val); }
+const requiredSelect = (val) => {  return !isNaN(val); };
 
 // comment form component
 function CommentForm(props) {
