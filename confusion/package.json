@@ -10,7 +10,7 @@
     "bootstrap-social": "5.1.1",
     "cors": "^2.8.5",
     "cross-fetch": "2.1.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "faker": "^4.1.0",
     "firebase": "^7.15.5",
     "firebase-admin": "^8.13.0",
